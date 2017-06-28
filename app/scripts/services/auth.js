@@ -23,28 +23,54 @@ angular.module('gameStoreApp')
          */
 
         var API = {
-            // TODO
+            login: login,
+            logout: logout,
+            register: register
         };
 
         // METHODS
 
         /**
+         * @public
          * @desc login to the server
          *        - if 'remember-me' on, saving to cookie.
+         *        - navigate to homepage
          * @param {string} username
          * @param {string} password
-         * 
-         * @return {void}
          */
         var login = function(username, password) {
             // TODO
         }
 
-        var register = function(params) {
+        /**
+         * @public
+         * @desc sign in user to the server,
+         *        - the server creates a new user and store it (to it's DB)
+         *        > the controller navigates to login
+         * @param {user} user
+         *     "userName": {string},
+         *     "password": {string},
+         *     "firstName": {string},
+         *     "lastName": {string},
+         *     "country": {string - from XML file},
+         *     "address": {string},
+         *     "phone": "0506543210",
+         *     "ansFirstQ": "DOG",
+         *     "ansSecondQ": "MILANO",
+         *     "categories": ["SPORT","Action"]
+         * 
+         * @return {boolean} true case success
+         */
+        var register = function(user) {
             // TODO
         }
 
-        var logout = function(params) {
+        /**
+         * @public
+         * @desc logs out from the system
+         *       # Notes: no server support yet.
+         */
+        var logout = function() {
             // TODO ? (no server support yet.)
             // cookie.
         }
