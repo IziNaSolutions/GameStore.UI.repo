@@ -8,7 +8,7 @@
  * Service in the gameStoreApp.
  */
 angular.module('gameStoreApp')
-    .service('auth', function() {
+    .service('auth', function(commonHttp) {
 
         /********** Initiate ***********/
 
@@ -22,10 +22,33 @@ angular.module('gameStoreApp')
          * API
          */
 
-        return {};
+        var API = {
+            // TODO
+        };
+
+        // METHODS
 
         /**
-         * Methods
+         * @desc login to the server
+         *        - if 'remember-me' on, saving to cookie.
+         * @param {string} username
+         * @param {string} password
+         * 
+         * @return {void}
          */
+        var login = function(username, password) {
+            // TODO
+        }
 
+        var register = function(params) {
+            // TODO
+        }
+
+        var logout = function(params) {
+            // TODO ? (no server support yet.)
+            // cookie.
+        }
+
+        /************* DONE *************/
+        return API;
     });

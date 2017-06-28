@@ -51,7 +51,12 @@ angular.module('gameStoreApp')
 
         /********** Public Methods ***********/
 
-
+        /**
+         * API
+         */
+        var API = {
+            httpCall: httpCall
+        };
 
         /**
          * Methods
@@ -82,18 +87,17 @@ angular.module('gameStoreApp')
                     data: angular.toJson(request)
                 })
                 .then(function(response) {
-                    // TODO bom hakol beseder
+                    $log.info("http call got response:", response);
+                    return response;
                 })
                 .catch(function(response) {
-                    // TODO bom lo beseder
+                    $log.error('http call fail! response:', response);
+                    return response;
                 });
         };
 
-        /**
-         * API
-         */
-        return {
-            // TODO
-        };
 
+
+        /************ DONE *************/
+        return API;
     });
