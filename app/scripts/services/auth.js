@@ -18,15 +18,7 @@ angular.module('gameStoreApp')
 
         /********** Public Methods ***********/
 
-        /**
-         * API
-         */
 
-        var API = {
-            login: login,
-            logout: logout,
-            register: register
-        };
 
         // METHODS
 
@@ -40,7 +32,7 @@ angular.module('gameStoreApp')
          */
         var login = function(username, password) {
             // TODO
-        }
+        };
 
         /**
          * @public
@@ -63,7 +55,7 @@ angular.module('gameStoreApp')
          */
         var register = function(user) {
             // TODO
-        }
+        };
 
         /**
          * @public
@@ -73,7 +65,16 @@ angular.module('gameStoreApp')
         var logout = function() {
             // TODO ? (no server support yet.)
             // cookie.
-        }
+        };
+
+        /**
+         * API
+         */
+        var API = {
+            login: login,
+            logout: logout,
+            register: register
+        };
 
         /************* DONE *************/
         return API;

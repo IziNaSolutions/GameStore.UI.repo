@@ -46,17 +46,29 @@ angular.module('gameStoreApp')
          *                  case parameters === null / {}, return ''.
          */
         function parametersToString(parameters) {
+            var result = '';
 
-        }
+            for (var index = 0; index < parameters.length; index++) {
+                var element = parameters[index];
+
+                if (index === 0) {
+                    result += '?';
+                }
+
+                result += element.name;
+                result += '=';
+                result += element.value;
+
+                if (index < parameters.length - 1) {
+                    result += '&';
+                }
+
+            } // for
+
+            return result;
+        } // function
 
         /********** Public Methods ***********/
-
-        /**
-         * API
-         */
-        var API = {
-            httpCall: httpCall
-        };
 
         /**
          * Methods
@@ -96,7 +108,12 @@ angular.module('gameStoreApp')
                 });
         };
 
-
+        /**
+         * API
+         */
+        var API = {
+            httpCall: httpCall
+        };
 
         /************ DONE *************/
         return API;
