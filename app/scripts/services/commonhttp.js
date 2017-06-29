@@ -21,7 +21,7 @@ angular.module('gameStoreApp')
          */
 
         function GetServiceBaseURL() {
-            var _ServiceBaseURL = '/';
+            var _ServiceBaseURL = '';
             var _devPort = 5001;
 
             if (document.domain.indexOf('localhost') !== -1) {
@@ -31,7 +31,8 @@ angular.module('gameStoreApp')
             return _ServiceBaseURL;
         }
 
-        var baseURL = new GetServiceBaseURL(); // dynamic;
+        // var baseURL = GetServiceBaseURL(); // dynamic;
+        var baseURL = 'http://localhost:5001'; // dev;
 
         $log.info('service base url:', baseURL);
 
@@ -47,6 +48,10 @@ angular.module('gameStoreApp')
          */
         function parametersToString(parameters) {
             var result = '';
+
+            if (parameters === null || parameters === undefined) {
+                return '';
+            }
 
             for (var index = 0; index < parameters.length; index++) {
                 var element = parameters[index];
@@ -79,25 +84,37 @@ angular.module('gameStoreApp')
          * @desc
          *        uses $http to send http requests to the server.
          * @param {string} method : 'POST', 'PUT', 'GET', 'DELETE'.
-         * @param {string} controller
+         * @param {string} route
          * 
          * ... TODO add all the params...
          * 
          * 
          * @return {object} http response
          */
-        var httpCall = function(method, controller, action, request, parameters) {
+        var httpCall = function(method, route, action, request, parameters) {
+
+            $log.info('in httpCall:', {
+                method: method,
+                route: route,
+                action: action,
+                request: request,
+                parameters: parameters,
+                baseURL: baseURL,
+            });
 
             var parametersString = parametersToString(parameters);
+            var config = {
+                method: method,
+                url: baseURL + route + action + ((method === 'GET') ? parametersString : ''),
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                data: angular.toJson(request)
+            };
 
-            return $http({
-                    method: method,
-                    url: baseURL + controller + action + (method === 'GET') ? parametersString : '',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    data: angular.toJson(request)
-                })
+            $log.info("http config:", config);
+
+            return $http(config)
                 .then(function(response) {
                     $log.info("http call got response:", response);
                     return response;

@@ -8,7 +8,7 @@
  * Service in the gameStoreApp.
  */
 angular.module('gameStoreApp')
-    .service('auth', function(commonHttp) {
+    .service('auth', function(commonHttp, $log) {
 
         /********** Initiate ***********/
 
@@ -17,8 +17,6 @@ angular.module('gameStoreApp')
 
 
         /********** Public Methods ***********/
-
-
 
         // METHODS
 
@@ -31,7 +29,20 @@ angular.module('gameStoreApp')
          * @param {string} password
          */
         var login = function(username, password) {
-            // TODO
+
+            $log.debug('in auth.login(' + username + ', ' + password + ')');
+
+            return commonHttp.httpCall(
+                'POST',
+                '/users',
+                '/login', {
+                    userName: username,
+                    password: password,
+                },
+                null
+            ).then(function(response) {
+                return response.data;
+            });
         };
 
         /**
