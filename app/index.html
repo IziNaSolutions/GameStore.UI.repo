@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title></title>
     <meta name="description" content="">
@@ -13,60 +14,102 @@
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
-  </head>
-  <body ng-app="gameStoreApp">
+</head>
+
+<body ng-app="gameStoreApp">
     <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
     <!-- Add your site or application content here -->
     <div class="header">
-      <div class="navbar navbar-default" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
+        <div class="navbar navbar-default" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
 
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
 
-            <a class="navbar-brand" href="#/">gameStore</a>
-          </div>
+                    <a class="navbar-brand" href="#/">Games Store</a>
+                </div>
 
-          <div class="collapse navbar-collapse" id="js-navbar-collapse">
+                <div class="collapse navbar-collapse" id="js-navbar-collapse">
 
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">Home</a></li>
-              <li><a ng-href="#/about">About</a></li>
-              <li><a ng-href="#/">Contact</a></li>
-            </ul>
-          </div>
+                    <ul class="nav navbar-nav">
+                        <li ng-repeat="item in menu" ng-class="{active: item.route == '#' + menuActive}">
+                            <a href="{{::item.route}}">{{item.label}}</a>
+                        </li>
+                    </ul>
+
+                    <!--TODO: (ng-if is connected) -->
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hello {{user.name}} <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <!--TODO: logout-->
+                                <li><a>Logout</a></li>
+                                <!--<li role="separator" class="divider"></li>-->
+                                <!--<li><a href="#">Separated link</a></li>-->
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <!-- TODO: change 'active' on route change event -->
+                    <!--<li ng-class="'active'"><a href="#/">Home</a></li>-->
+
+                    <!--<li><a ng-href="#/about">About</a></li>-->
+
+                    <!--TODO: (ng-if not connected)-->
+                    <!--<li><a ng-href="#/login">Login</a></li>-->
+
+                    <!--TODO: cart component (ng-if connected)-->
+                    <!--<li><a>Cart</a></li>-->
+
+                    <!--TODO: for all (but some of it will be ng-if connected)-->
+                    <!--<li><a>Catalog</a></li>-->
+
+                    <!--TODO: Admin Dropdown (ng-if admin)-->
+
+                    <!--TODO: Hello Dropdown (ng-if connected)-->
+
+                    </ul>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
 
     <div class="container">
-    <div ng-view=""></div>
+        <div ng-view=""></div>
     </div>
 
     <div class="footer">
-      <div class="container">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
-      </div>
+        <div class="container">
+            <p>
+                Developers:
+                <ui>
+                    <li>Eliran Nachmani</li>
+                    <li>Amit Livne</li>
+                </ui>
+            </p>
+        </div>
     </div>
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-     <script>
-       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
-       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
-       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
-       }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    <script>
+        ! function(A, n, g, u, l, a, r) {
+            A.GoogleAnalyticsObject = l, A[l] = A[l] || function() {
+                    (A[l].q = A[l].q || []).push(arguments)
+                }, A[l].l = +new Date, a = n.createElement(g),
+                r = n.getElementsByTagName(g)[0], a.src = u, r.parentNode.insertBefore(a, r)
+        }(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-       ga('create', 'UA-XXXXX-X');
-       ga('send', 'pageview');
+        ga('create', 'UA-XXXXX-X');
+        ga('send', 'pageview');
     </script>
 
     <!-- build:js(.) scripts/vendor.js -->
@@ -83,10 +126,14 @@
     <!-- endbower -->
     <!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/about.js"></script>
-        <!-- endbuild -->
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/about.js"></script>
+    <script src="scripts/services/auth.js"></script>
+    <script src="scripts/services/commonhttp.js"></script>
+    <script src="scripts/controllers/login.js"></script>
+    <!-- endbuild -->
 </body>
+
 </html>

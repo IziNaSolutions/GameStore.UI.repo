@@ -1,0 +1,20 @@
+<div class="container">
+
+    <span ng-class="login.message.class">
+        {{login.message.text}}
+    </span>
+
+    <form class="form-signin" ng-submit="login.submit()">
+        <h2 class="form-signin-heading">Log In To Server</h2>
+        <label for="inputUserName" class="sr-only">User Name</label>
+        <input ng-model="login.inputUserName" type="text" id="inputUserName" class="form-control" placeholder="User Name" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input ng-model="login.inputPassword" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <div class="checkbox">
+            <label>
+                <input ng-model="login.remember" type="checkbox" value="remember-me"> Remember me
+            </label>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        </div>
+    </form>
+</div>

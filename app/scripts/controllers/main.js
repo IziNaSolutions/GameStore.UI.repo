@@ -8,10 +8,68 @@
  * Controller of the gameStoreApp
  */
 angular.module('gameStoreApp')
-  .controller('MainCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+    .controller('MainCtrl', function($rootScope, $location) {
+
+        /********** init main **********/
+
+        if ($rootScope.user === undefined) {
+            $rootScope.user = {
+                isConnected: false,
+                role: 'guest',
+            };
+        }
+
+        if ($rootScope.menu === undefined) {
+
+            $rootScope.menu = [{
+                    label: 'Home',
+                    route: '#/',
+                    roles: ['guest', 'user', 'admin']
+                },
+                {
+                    label: 'Login',
+                    route: '#/login',
+                    roles: ['guest']
+                },
+                {
+                    label: 'Cart',
+                    route: '#/cart',
+                    roles: ['user', 'admin']
+                },
+                {
+                    label: 'Register',
+                    route: '#/register',
+                    roles: ['guest']
+                },
+                {
+                    label: 'About',
+                    route: '#/about',
+                    roles: ['guest', 'user', 'admin']
+                },
+                {
+                    label: 'Catalog',
+                    route: '#/catalog',
+                    roles: ['guest', 'user', 'admin']
+                },
+            ];
+
+            $rootScope.menuActive = '/';
+        }
+
+        $rootScope.$on('$routeChangeSuccess', function(e, curr, prev) {
+            $rootScope.menuActive = $location.path();
+
+            // $log.debug("user:", $rootScope.user);
+            // $log.debug('e:', e);
+            // $log.debug('curr:', curr);
+            // $log.debug('prev:', prev);
+        });
+
+        /* log functions: */
+        /*
+        $log.info("info");
+        $log.debug("debug");
+        $log.warn("warn");
+        $log.error("error");
+        */
+    });
