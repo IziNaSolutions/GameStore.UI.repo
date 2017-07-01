@@ -16,6 +16,7 @@ angular.module('gameStoreApp')
             $rootScope.user = {
                 isConnected: false,
                 role: 'guest',
+                userName: 'Guest',
             };
         }
 
