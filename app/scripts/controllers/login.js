@@ -8,7 +8,7 @@
  * Controller of the gameStoreApp
  */
 angular.module('gameStoreApp')
-    .controller('LoginCtrl', function($location, $cookies, $log, auth, $rootScope) {
+    .controller('LoginCtrl', function($location, $log, auth, $rootScope, session) {
 
         /********* init **********/
 
@@ -49,8 +49,7 @@ angular.module('gameStoreApp')
 
                         // remember me!
                         if (login.remember === true) {
-                            $cookies.putObject('gameStoreUser', $rootScope.user);
-                            $log.info('$cookies.putObject', $rootScope.user);
+                            session.remember($rootScope.user);
                         }
 
                         // navigate after login to homepage

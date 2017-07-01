@@ -8,71 +8,66 @@
  * Controller of the gameStoreApp
  */
 angular.module('gameStoreApp')
-    .controller('MainCtrl', function($rootScope, $location, session) {
+  .controller('MainCtrl', function ($rootScope, $location, session, $log) {
 
-        //////////// init main /////////////
+    //////////// init main /////////////
 
-        var main = this;
+    var main = this;
 
-        if ($rootScope.user === undefined) {
-            $rootScope.user = {
-                isConnected: false,
-                role: 'guest',
-                userName: 'Guest',
-            };
-        }
+    $rootScope.user = session.get();
+    $log.info('mainCtrl.$rootScope.user:', $rootScope.user);
 
-        if ($rootScope.menu === undefined) {
+    if ($rootScope.menu === undefined) {
 
-            $rootScope.menu = [{
-                    label: 'Home',
-                    route: '#/',
-                    roles: ['guest', 'user', 'admin']
-                },
-                {
-                    label: 'Login',
-                    route: '#/login',
-                    roles: ['guest']
-                },
-                {
-                    label: 'Cart',
-                    route: '#/cart',
-                    roles: ['user', 'admin']
-                },
-                {
-                    label: 'Register',
-                    route: '#/register',
-                    roles: ['guest']
-                },
-                {
-                    label: 'About',
-                    route: '#/about',
-                    roles: ['guest', 'user', 'admin']
-                },
-                {
-                    label: 'Catalog',
-                    route: '#/catalog',
-                    roles: ['guest', 'user', 'admin']
-                },
-            ];
+      $rootScope.menu = [{
+          label: 'Home',
+          route: '#/',
+          roles: ['guest', 'user', 'admin']
+        },
+        {
+          label: 'Login',
+          route: '#/login',
+          roles: ['guest']
+        },
+        {
+          label: 'Cart',
+          route: '#/cart',
+          roles: ['user', 'admin']
+        },
+        {
+          label: 'Register',
+          route: '#/register',
+          roles: ['guest']
+        },
+        {
+          label: 'About',
+          route: '#/about',
+          roles: ['guest', 'user', 'admin']
+        },
+        {
+          label: 'Catalog',
+          route: '#/catalog',
+          roles: ['guest', 'user', 'admin']
+        },
+      ];
 
-            $rootScope.menuActive = '/';
-        }
+      $rootScope.menuActive = '/';
+    }
 
-        $rootScope.$on('$routeChangeSuccess', function(e, curr, prev) {
-            $rootScope.menuActive = $location.path();
+    $rootScope.$on('$routeChangeSuccess', function (e, curr, prev) {
+      $rootScope.menuActive = $location.path();
 
-            // $log.debug("user:", $rootScope.user);
-            // $log.debug('e:', e);
-            // $log.debug('curr:', curr);
-            // $log.debug('prev:', prev);
-        });
-
-        /* log functions: */
-        /*
-        $log.info("info");
-        $log.debug("debug");
-        $log.warn("warn");
-        $log.error("error");
-        */
+      // $log.debug("user:", $rootScope.user);
+      // $log.debug('e:', e);
+      // $log.debug('curr:', curr);
+      // $log.debug('prev:', prev);
     });
+
+    /* log functions: */
+    /*
+    $log.info("info");
+    $log.debug("debug");
+    $log.warn("warn");
+    $log.error("error");
+    */
+  });

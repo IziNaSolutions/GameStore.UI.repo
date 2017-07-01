@@ -50,10 +50,10 @@
                     <!-- Hello Dropdown -->
 
                     <!--TODO: (ng-if is connected) -->
-                    <ul class="nav navbar-nav navbar-right" ng-if="user.isConnected">
+                    <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hello {{user.userName}} <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
+                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hello {{user.userName}} <span class="caret" ng-if="user.isConnected"></span></a>
+                            <ul class="dropdown-menu" ng-if="user.isConnected">
                                 <!-- TODO - actions for user: view my profile.. etc -->
                                 <li><a>TODO - actions for user</a></li>                                
                                 <li role="separator" class="divider"></li>
