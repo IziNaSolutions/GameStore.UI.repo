@@ -69,8 +69,22 @@ angular.module('gameStoreApp')
      * @param {user} user 
      */
     function remember(user) {
-      $cookies.putObject(_cookieKey, user);
-      $log.info('in session.remember(' + user.userName + ')', user);
+
+      var currentDate = new Date(Date.now());
+      $log.info('current Date:', currentDate);
+
+      var expiration = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDay() + 1);
+
+      $cookies.putObject(
+        _cookieKey,
+        user, {
+          expires: expiration,
+        }
+      );
+
+      $log.info('session.remember user:', user);
+      $log.info('session.remember expiration date:', expiration);
+      $log.info('session.remember cookie key:', _cookieKey);
     }
 
     /**
@@ -85,10 +99,15 @@ angular.module('gameStoreApp')
       var storedUser = null;
 
       storedUser = $cookies.getObject(_cookieKey);
+      $log.debug('stored cookie:', storedUser);
 
-      if(!$rootScope.isConnected && storedUser !== null && storedUser !== undefined){
+      if (!$rootScope.isConnected && storedUser !== null && storedUser !== undefined) {
         $rootScope.user = storedUser;
+        $rootScope.user.isConnected = true;
+        $log.debug('is session.get() -> took cookie');
       }
+
+      $log.info('in session.get()', $rootScope.user);
 
       return $rootScope.user;
     }
@@ -124,6 +143,7 @@ angular.module('gameStoreApp')
     //////// root scope methods publish //////
 
     $rootScope.logout = logout;
+    $rootScope.get = get;
 
     ////////////// DONE ////////////////
     return API;
