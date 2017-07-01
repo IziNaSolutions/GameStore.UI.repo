@@ -26,6 +26,8 @@ angular.module('gameStoreApp')
       };
     }
 
+    var _cookieKey = 'GameStoreUser';
+
     ///////////// Private Methods //////////
 
 
@@ -59,22 +61,71 @@ angular.module('gameStoreApp')
     /**
      * @public
      * @desc
+     *      use the $cookies provider to store the user object
+     *      as a cookie at the client computer.
+     * 
+     * @return {string} cookie key name
+     * 
+     * @param {user} user 
+     */
+    function remember(user) {
+      $cookies.putObject(_cookieKey, user);
+      $log.info('in session.remember(' + user.userName + ')', user);
+    }
+
+    /**
+     * @public
+     * @desc
      * 
      *  TODO - Amit
      *  
      * @return {user} current session
      */
-    function getSession() {
+    function get() {
+      var storedUser = null;
+
+      storedUser = $cookies.getObject(_cookieKey);
+
+      if(!$rootScope.isConnected && storedUser !== null && storedUser !== undefined){
+        $rootScope.user = storedUser;
+      }
+
       return $rootScope.user;
+    }
+
+    /**
+     * @public
+     * 
+     * @desc
+     *      logging the user out - delete cookie
+     */
+    function logout() {
+
+      $rootScope.user = {
+        isConnected: false,
+        role: 'guest',
+        userName: 'Guest',
+      };
+
+      // TODO - amit to test - see if exception not thrown here if cookie not exists...
+      $cookies.remove(_cookieKey);
+
     }
 
 
     // API
     var API = {
-      // TODO - Expose Public Methods
+      get: get,
+      remember: remember,
+      connect: connect,
+      logout: logout,
     };
 
-    //************* DONE *************/
+    //////// root scope methods publish //////
+
+    $rootScope.logout = logout;
+
+    ////////////// DONE ////////////////
     return API;
 
   });

@@ -39,21 +39,25 @@
 
                 <div class="collapse navbar-collapse" id="js-navbar-collapse">
 
+                    <!-- All Menu Components -->
+
                     <ul class="nav navbar-nav">
-                        <li ng-repeat="item in menu" ng-class="{active: item.route == '#' + menuActive}">
+                        <li ng-repeat="item in menu" ng-class="{active: item.route == '#' + menuActive}" ng-if="item.roles.includes(user.role)">
                             <a href="{{::item.route}}">{{item.label}}</a>
                         </li>
                     </ul>
 
+                    <!-- Hello Dropdown -->
+
                     <!--TODO: (ng-if is connected) -->
-                    <ul class="nav navbar-nav navbar-right">
+                    <ul class="nav navbar-nav navbar-right" ng-if="user.isConnected">
                         <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hello {{user.name}} <span class="caret"></span></a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hello {{user.userName}} <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <!--TODO: logout-->
-                                <li><a>Logout</a></li>
-                                <!--<li role="separator" class="divider"></li>-->
-                                <!--<li><a href="#">Separated link</a></li>-->
+                                <!-- TODO - actions for user: view my profile.. etc -->
+                                <li><a>TODO - actions for user</a></li>                                
+                                <li role="separator" class="divider"></li>
+                                <li><a ng-click="logout()">Logout</a></li>
                             </ul>
                         </li>
                     </ul>

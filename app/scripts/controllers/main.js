@@ -8,9 +8,11 @@
  * Controller of the gameStoreApp
  */
 angular.module('gameStoreApp')
-    .controller('MainCtrl', function($rootScope, $location) {
+    .controller('MainCtrl', function($rootScope, $location, session) {
 
-        /********** init main **********/
+        //////////// init main /////////////
+
+        var main = this;
 
         if ($rootScope.user === undefined) {
             $rootScope.user = {
