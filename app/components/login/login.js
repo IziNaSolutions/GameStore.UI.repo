@@ -33,6 +33,15 @@ angular.module('gameStoreApp')
             auth.login(login.inputUserName, login.inputPassword)
                 .then(function(result) {
 
+                    if(!result){
+                        login.message = {
+                            text: 'connection to the server fail, please check your internet connection',
+                            class: 'label label-danger',
+                        };
+
+                        return;
+                    }
+
                     if (result.success) {
 
                         $rootScope.user.isConnected = true;
@@ -57,7 +66,7 @@ angular.module('gameStoreApp')
 
                     } else {
                         login.message.text = result;
-                        login.message.class = 'label label-danger';
+                        login.message.class = 'label label-warning';
                     } // if result.success
 
                 }); // auth.login
