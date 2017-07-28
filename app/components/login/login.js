@@ -74,3 +74,5 @@ angular.module('gameStoreApp')
         }; // login.submit
 
     }); // angular.controller
+
+    // TODO: fix redirect doesn't working after login
