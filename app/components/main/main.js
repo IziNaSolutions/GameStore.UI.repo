@@ -50,6 +50,7 @@ angular.module('gameStoreApp')
           roles: ['guest', 'user', 'admin'],
           controller: 'CatalogCtrl'
           
+          
         },
       ];
 

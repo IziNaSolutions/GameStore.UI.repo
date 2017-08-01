@@ -8,27 +8,34 @@
  * Controller of the gameStoreApp
  */
 angular.module('gameStoreApp')
-  .controller('CatalogCtrl', function ($http,$rootScope, $location, session, $log) {
+  .controller('CatalogCtrl', function (commonHttp,session,$rootScope, products, $log) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
-    var self = this;
-    self.url = 'http://localhost:5001/games/getAll_Items';
-    $http.get(self.url).success(function(data)
-    {
-      self.games=data;
-      self.url2 = 'http://localhost:5001/users/getRecomandation?userName='; //todo: change to be according to userName;
-      self.url2 += $rootScope.user;
-    $http.get(self.url2).success(function(data)
-    {
-      self.Recgames=data;
-    });
+    var catalog = this;
 
-  });
+    catalog.baseUrl = commonHttp.GetServiceBaseURL();
+    catalog.user = session.get().userName;
+    
+    products.getAllProduct()
+            .then(function(res) {
+                $log.info("getAllProduct response:", res);
+                catalog.games = res;                
+                products.gamesRec(catalog.user)                
+                .then(function(res)
+                {
+                  $log.info("gamesRec response:", res);
+                  catalog.Recgames = res;                  
+                });
 
-  });
+            });
+  
+      });
+  
+
+
 
 
 

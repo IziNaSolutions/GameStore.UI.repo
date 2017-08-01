@@ -129,7 +129,8 @@ angular.module('gameStoreApp')
          * API
          */
         var API = {
-            httpCall: httpCall
+            httpCall: httpCall,
+            GetServiceBaseURL:GetServiceBaseURL
         };
 
         /************ DONE *************/

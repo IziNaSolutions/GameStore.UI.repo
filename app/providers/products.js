@@ -12,7 +12,7 @@ angular.module('gameStoreApp')
 
     var getAllProduct = function (){
       return commonHttp.httpCall(
-        'get',
+        'GET',
         '/games',
         '/getAll_Items', {
         },
@@ -25,7 +25,7 @@ angular.module('gameStoreApp')
 
     var getTopFive = function (){
       return commonHttp.httpCall(
-        'get',
+        'GET',
         '/games',
         '/topfivegames', {
         },
@@ -37,7 +37,7 @@ angular.module('gameStoreApp')
 
     var getCategories = function (){
       return commonHttp.httpCall(
-        'get',
+        'GET',
         '/games',
         '/getCategories', {
         },
@@ -49,7 +49,7 @@ angular.module('gameStoreApp')
 
     var getLastMonthItems = function (){
       return commonHttp.httpCall(
-        'get',
+        'GET',
         '/games',
         '/getLastMonthItems', {
         },
@@ -61,7 +61,7 @@ angular.module('gameStoreApp')
 
     var getGame = function (gameName){
       return commonHttp.httpCall(
-        'get',
+        'GET',
         '/games',
         '/getItemByID', {
           gameName : gameName,
@@ -74,7 +74,7 @@ angular.module('gameStoreApp')
 
     var getItemsByCategory = function (category){
       return commonHttp.httpCall(
-        'get',
+        'GET',
         '/games',
         '/getItemsByCategory', {
           category : category,
@@ -87,7 +87,7 @@ angular.module('gameStoreApp')
 
     var getStorage = function (){
       return commonHttp.httpCall(
-        'get',
+        'GET',
         '/games',
         '/getStorage', {
         },
@@ -99,7 +99,7 @@ angular.module('gameStoreApp')
 
     var updateAmount = function (){
       return commonHttp.httpCall(
-        'post',
+        'POST',
         '/games',
         '/updateAmount', {
           gameName : gameName,
@@ -113,7 +113,7 @@ angular.module('gameStoreApp')
 
     var addGame = function (gameName,desc,picPath,publisher,price,stokeAmount,category){
       return commonHttp.httpCall(
-        'post',
+        'POST',
         '/games',
         '/addGame', {
           gameName : gameName,
@@ -130,10 +130,24 @@ angular.module('gameStoreApp')
       });
     }
 
+    var gamesRec = function (user){
+      return commonHttp.httpCall(
+        'GET',
+        '/users',
+        '/getRecomandation',
+        null,[{
+                    name: 'userName',
+                    value: user
+                }]
+      ).then(function (response) {
+        return response.data;
+      });
+    }
+
 
     var deleteGame = function (gameName){
       return commonHttp.httpCall(
-        'delete',
+        'DELETE',
         '/games',
         '/deleteGame', {
           gameName : gameName,          
@@ -144,7 +158,21 @@ angular.module('gameStoreApp')
       });
     }
 
+    var API = {
+            getAllProduct: getAllProduct,
+            getTopFive: getTopFive,
+            getCategories: getCategories,
+            getLastMonthItems: getLastMonthItems,
+            getGame: getGame,
+            getItemsByCategory: getItemsByCategory,
+            getStorage: getStorage,
+            updateAmount: updateAmount,
+            addGame: addGame,
+            gamesRec:gamesRec,
+            deleteGame: deleteGame,
+        };
 
+    return API;
     
 
 

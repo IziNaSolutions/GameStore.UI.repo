@@ -1,18 +1,18 @@
 <p>This is the catalog view.</p>
 
 
-<div class="content">
+<div class="content">  
       <button ng-click="order= 'gameName' ">order by name</button>
       <button ng-click="order= 'category'">order by category</button>
       <button ng-click="order= 'publisher'">order by publisher</button>
+      <br>
     <input type="text" ng-model="search" placeholder="search for a game">
     <input type="text" ng-model="searchCategory" placeholder="search for a category">
     <ul id="game-list">
-      <li ng-repeat="game in CatalogCtrl.games | orderBy: order | filter: {gameName : search , category : searchCategory}">
-        <img class="details" ng-src="{{game.picPath}}" style="margin: -12px 10px 0 0; float:left ;width:50px;"
-             ng-show="game.picPath" ng-click="gameDetails(game)"/>
-        <h3>{{game.gameName}} , By: {{game.publisher}}</h3>
-        <div class="remove" ng-click="removeGame(game)">x</div>
+      <li ng-repeat="game in catalog.games | orderBy: order | filter: {gameName : search , category : searchCategory}">
+        <img class="details" ng-src="{{catalog.baseUrl + game.picpath}}" style="margin: -12px 10px 0 0; float:left ;width:50px;"
+             ng-click="gameDetails(game)"/>
+        <h3>{{game.gameName}} , By: {{game.publisher}}</h3>        
         <span class="price">{{game.category}}, {{game.price | currency}}</span>
       </li>
     </ul>
@@ -21,9 +21,9 @@
 <h1>Recommandation for you:</h1>
 <div class="content">
     <ul id="game-list">
-      <li  ng-repeat="rec in CatalogCtrl.Recgames">
-        <img class="details" ng-src="{{rec.picPath}}" style="margin: -12px 10px 0 0; float:left ;width:50px;"
-             ng-show="rec.picPath" ng-click="gameDetails(rec)"/>
+      <li  ng-repeat="rec in catalog.Recgames">
+        <img class="details" ng-src="{{catalog.baseUrl + rec.picpath}}" style="margin: -12px 10px 0 0; float:left ;width:50px;"
+             ng-click="gameDetails(rec)"/>
         <h3>{{rec.gameName}}, By:{{rec.publisher}}</h3>
         <span class="price">{{rec.price | currency}}</span>
       </li>
