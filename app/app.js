@@ -43,7 +43,7 @@ angular
             .when('/cart', {
                 templateUrl: 'components/cart/cart.html',
                 controller: 'CartCtrl',
-                controllerAs: 'cart'
+                controllerAs: 'cartSelf'
             })
             .when('/catalog', {
                 templateUrl: 'components/catalog/catalog.html',
