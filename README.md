@@ -28,3 +28,21 @@ Running `grunt test` will run the unit tests with karma.
 11. `git push`
 
 ![meme](https://www.thesun.co.uk/wp-content/uploads/2016/07/nintchdbpict000252984341.jpg?w=650)
+
+## How To Get your Friends CODE?!!? (pulling code from master)
+1. your buddy needs to create PR (pull request) - Base: `master` - Compare: `buddy-branch-example-0`
+   1. review this PR
+   2. Approove this PR
+   3. Merge this PR
+   4. **your buddy code now on mster!**
+2. YOU:
+   1. `cd` to your repository by bash terminal
+   2. `git pull origin master --ff-only`
+      - this will try to get the code from master
+      - case fail: you need to solve merge conflicts!
+      - case success: your local branch now has the code of your buddy too! so commit & push.
+    
+## how to solve merge conflicts?!
+google it.
+> (or ask me if i have time..)
+
