@@ -51,9 +51,39 @@ angular.module('gameStoreApp')
             });
         };
 
+        var updateItemAmountAtCart = function(gameName, amount, userName) {
+            if (amount === 0) {
+                return commonHttp.httpCall(
+                    'DELETE',
+                    '/cart',
+                    '/deleteItemFromCart', {
+                        userName: userName,
+                        gameName: gameName,
+                    },
+                    null
+                ).then(function(response) {
+                    return response.data;
+                });
+            } else {
+                return commonHttp.httpCall(
+                    'PUT',
+                    '/cart',
+                    '/updateItemAmountAtCart', {
+                        userName: userName,
+                        gameName: gameName,
+                        amount: amount,
+                    },
+                    null
+                ).then(function(response) {
+                    return response.data;
+                });
+            }
+        };
+
         var API = {
             getCartInfo: getCartInfo,
             addToCart: addToCart,
+            updateItemAmountAtCart: updateItemAmountAtCart,
         };
 
         return API;
