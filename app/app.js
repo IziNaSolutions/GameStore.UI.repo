@@ -73,7 +73,7 @@ angular
             .when('/register', {
                 templateUrl: 'components/register/register.html',
                 controller: 'RegisterCtrl',
-                controllerAs: 'register'
+                controllerAs: 'registerCtrl'
             })
             .otherwise({
                 redirectTo: '/'

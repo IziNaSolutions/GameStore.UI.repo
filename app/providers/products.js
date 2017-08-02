@@ -10,6 +10,8 @@
 angular.module('gameStoreApp')
   .service('products', function (commonHttp,$log) {
 
+    
+
     var getAllProduct = function (){
       return commonHttp.httpCall(
         'GET',
