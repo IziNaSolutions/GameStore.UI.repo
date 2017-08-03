@@ -15,7 +15,8 @@ angular
         'ngResource',
         'ngRoute',
         'ngSanitize',
-        'ngTouch'
+        'ngTouch',
+        '720kb.datepicker',
     ])
     .config(function($routeProvider, $locationProvider) {
         $routeProvider
@@ -63,7 +64,7 @@ angular
             .when('/orders', {
                 templateUrl: 'components/orders/orders.html',
                 controller: 'OrdersCtrl',
-                controllerAs: 'orders'
+                controllerAs: 'ordersSelf'
             })
             .when('/ordersManagement', {
                 templateUrl: 'components/ordersManagement/ordersManagement.html',
@@ -74,6 +75,11 @@ angular
                 templateUrl: 'components/register/register.html',
                 controller: 'RegisterCtrl',
                 controllerAs: 'register'
+            })
+            .when('/pay', {
+                templateUrl: 'components/bill/bill.html',
+                controller: 'BillCtrl',
+                controllerAs: 'bill',
             })
             .otherwise({
                 redirectTo: '/'

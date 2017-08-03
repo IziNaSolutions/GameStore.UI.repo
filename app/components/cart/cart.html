@@ -1,3 +1,10 @@
+<div style="display: table; margin: auto;">
+    <span class="step step_complete"> <a ng-click="bill.backToCart()" class="check-bc">Back to cart</a> <span class="step_line step_complete"> </span> <span class="step_line backline"> </span> </span>
+
+    <div class="row">
+        <p></p>
+    </div>
+</div>
 <div class="container">
     <h1>Your Cart:</h1>
     <div>
@@ -52,10 +59,11 @@
                         <td class="text-center"><strong>Total: {{cartSelf.total}} $ </strong></td>
                     </tr>
                     <tr>
-                        <td><a href="#" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
+                        <td><a ng-click="cartSelf.navigateTo('catalog')" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
                         <td colspan="2" class="hidden-xs"></td>
                         <td class="hidden-xs text-center"><strong>Total: {{cartSelf.total}} $ </strong></td>
-                        <td ng-show="cartSelf.show"><a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
+                        <td ng-show="cartSelf.show"> <a ng-click="cartSelf.navigateTo('pay')" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a>
+                        </td>
                     </tr>
                 </tfoot>
             </table>

@@ -8,7 +8,7 @@
  * Controller of the gameStoreApp
  */
 angular.module('gameStoreApp')
-    .controller('CartCtrl', function(cart, session, $log, commonHttp) {
+    .controller('CartCtrl', function(cart, session, $log, $location) {
 
         /////// init /////////
 
@@ -17,7 +17,7 @@ angular.module('gameStoreApp')
         cartSelf.user = session.get();
         cartSelf.empty = false;
 
-        cartSelf.baseUrl = commonHttp.GetServiceBaseURL();
+        cartSelf.baseUrl = cart.GetServiceBaseURL();
 
         cartSelf.total = 0;
 
@@ -46,7 +46,6 @@ angular.module('gameStoreApp')
                 cartSelf.show = false;
                 cartSelf.total = 0;
                 cart.updateItemAmountAtCart(product.gameName, product.quantity, cartSelf.user.userName).then(function(res) {
-                    console.log(res);
                     getCartInfo();
                 });
             }
@@ -60,6 +59,13 @@ angular.module('gameStoreApp')
                 getCartInfo();
             });
         };
+
+        cartSelf.navigateTo = function(next) {
+            $location.path('/' + next);
+        }
+
+
+
 
 
 

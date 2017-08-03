@@ -34,6 +34,10 @@ angular.module('gameStoreApp')
             });
         };
 
+        var GetServiceBaseURL = function() {
+            return commonHttp.GetServiceBaseURL();
+        }
+
         var addToCart = function(gameName, amount, userName) {
             $log.debug('in cart.addToCart( ' + userName + ', ' + gameName + ', ' + amount + ' )');
 
@@ -84,6 +88,7 @@ angular.module('gameStoreApp')
             getCartInfo: getCartInfo,
             addToCart: addToCart,
             updateItemAmountAtCart: updateItemAmountAtCart,
+            GetServiceBaseURL: GetServiceBaseURL,
         };
 
         return API;
