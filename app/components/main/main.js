@@ -47,8 +47,8 @@ angular.module('gameStoreApp')
         {
           label: 'Catalog',
           route: '#/catalog',
-          roles: ['guest', 'user', 'admin'],
-          controller: 'CatalogCtrl'
+          roles: ['guest', 'user', 'admin']
+          
           
           
         },

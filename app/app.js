@@ -56,7 +56,7 @@ angular
                 controllerAs: 'catalog'
             })
             .when('/clientsManagement', {
-                templateUrl: 'components/clientsManagement/clientsmanagement.html',
+                templateUrl: 'components/clientsManagement/clientsManagement.html',
                 controller: 'ClientsManagementCtrl',
                 controllerAs: 'clientsManagement'
             })
