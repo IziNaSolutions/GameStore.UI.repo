@@ -99,9 +99,9 @@ angular.module('gameStoreApp')
       });
     }
 
-    var updateAmount = function (){
+    var updateAmount = function (gameName,StokeAmount){
       return commonHttp.httpCall(
-        'POST',
+        'PUT',
         '/games',
         '/updateAmount', {
           gameName : gameName,
