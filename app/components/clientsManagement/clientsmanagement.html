@@ -1,1 +1,11 @@
-<p>This is the clientsManagement view.</p>
+<h1>This is the clients managment view.</h1>
+<div class="content">
+    <h3>add a new user to DB </h3>  
+    <input type="button" class="btn btn-lg btn-primary" value="add a new user" ng-click="clientsManagement.register()">
+    <h3>choose user to delete </h3>    
+    <select class="C" ng-model="deleted" ng-options="user.userName for user in clientsManagement.users" required autofocus>
+    <option value=""></option>
+    </select>
+    <input type="submit" class="btn btn-danger" value="Submit" ng-click="clientsManagement.deleteUser(deleted.userName)">    
+</div>
+<br>

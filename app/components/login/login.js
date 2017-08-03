@@ -8,7 +8,7 @@
  * Controller of the gameStoreApp
  */
 angular.module('gameStoreApp')
-    .controller('LoginCtrl', function($location, $log, auth, $rootScope, session) {
+    .controller('LoginCtrl', function($location, $log, auth, $rootScope, session,clients) {
 
         /********* init **********/
 
@@ -22,7 +22,31 @@ angular.module('gameStoreApp')
             fail: false,
         };
 
+        login.ans1 = '';
+        login.ans2 = '';
+        login.recPass = '';
+
         /********** functions ******/
+        login.recoverPass = function(){
+            clients.recoverPassword(login.recoverUserName,login.ans1,login.ans2).then(function(res) {
+                $log.info("recoverPass response:", res);
+                
+                if(!res){
+                    login.recPass = false;
+                    if(!login.recoverUserName) {
+                        alert('please fill user name in order to recover password')
+                    }
+                    if(!login.ans1){
+                        alert('please fill firt answer in order to recover password')
+                    }
+                    if(!login.ans2){
+                        alert('please fill second answer in order to recover password')
+                    }
+                    else(alert('cannot recover password please re check you entries'))
+                } 
+                else{login.recPass = res["0"].password; }
+            });
+        }
 
         login.submit = function() {
 
@@ -48,6 +72,7 @@ angular.module('gameStoreApp')
                         $rootScope.user.userName = result.userName;
                         $rootScope.user.role = result.type;
                         $rootScope.user.lastTime = result.lastTime;
+                        alert('last connection was: ' + $rootScope.user.lastTime);
 
                         // Example:
                         login.message.text = result.formattedString;
@@ -62,7 +87,7 @@ angular.module('gameStoreApp')
                         }
 
                         // navigate after login to homepage
-                        $location.path('/catalog');
+                        $location.path('/postlogin');
 
                     } else {
                         login.message.text = result;
@@ -74,3 +99,5 @@ angular.module('gameStoreApp')
         }; // login.submit
 
     }); // angular.controller
+
+    // TODO: fix redirect doesn't working after login
