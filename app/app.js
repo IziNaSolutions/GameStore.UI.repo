@@ -38,6 +38,11 @@ angular
                 controller: 'LoginCtrl',
                 controllerAs: 'login'
             })
+            .when('/postlogin', {
+                templateUrl: 'components/login/postLogin.html',
+                controller: 'CatalogCtrl',
+                controllerAs: 'catalog'
+            })
             .when('/bill', {
                 templateUrl: 'components/bill/bill.html',
                 controller: 'BillCtrl',
@@ -58,6 +63,11 @@ angular
                 controller: 'ClientsManagementCtrl',
                 controllerAs: 'clientsManagement'
             })
+            .when('/gamesManagement', {
+                templateUrl: 'components/gamesManagement/gamesmanagement.html',
+                controller: 'GamesManagementCtrl',
+                controllerAs: 'gamesManagement'
+            })             
             .when('/inventory', {
                 templateUrl: 'components/inventory/inventory.html',
                 controller: 'InventoryCtrl',
@@ -76,7 +86,7 @@ angular
             .when('/register', {
                 templateUrl: 'components/register/register.html',
                 controller: 'RegisterCtrl',
-                controllerAs: 'register'
+                controllerAs: 'registerCtrl'
             })
             .when('/order_details/:orderID', {
                 templateUrl: 'components/orderDetails/orderDetails.html',
