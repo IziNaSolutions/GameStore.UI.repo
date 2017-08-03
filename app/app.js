@@ -56,10 +56,15 @@ angular
                 controllerAs: 'catalog'
             })
             .when('/clientsManagement', {
-                templateUrl: 'components/clientsManagement/clientsManagement.html',
+                templateUrl: 'components/clientsManagement/clientsmanagement.html',
                 controller: 'ClientsManagementCtrl',
                 controllerAs: 'clientsManagement'
             })
+            .when('/gamesManagement', {
+                templateUrl: 'components/gamesManagement/gamesmanagement.html',
+                controller: 'GamesManagementCtrl',
+                controllerAs: 'gamesManagement'
+            })             
             .when('/inventory', {
                 templateUrl: 'components/inventory/inventory.html',
                 controller: 'InventoryCtrl',

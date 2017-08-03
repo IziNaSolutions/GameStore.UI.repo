@@ -34,8 +34,39 @@ angular.module('gameStoreApp')
       });
     }
 
+    var getUsers = function (){
+      return commonHttp.httpCall(
+        'GET',
+        '/users',
+        '/getUsers', null, null,
+        
+      ).then(function (response) {
+        return response.data;
+      });
+    }
+
+    var deleteUser = function (userName){
+      return commonHttp.httpCall(
+        'DELETE',
+        '/users',
+        '/deleteUser',
+                    {
+                      userName: userName,
+                    }  ,null
+      ).then(function (response) {
+        alert(userName + ' deleted successfully and list will be refreshed')        
+        return response.data;
+      });
+    }
+
+
+
+
+
     var API = {
-      recoverPassword: recoverPassword
+      recoverPassword: recoverPassword,
+      deleteUser : deleteUser,
+      getUsers : getUsers
     }
     return API;
 
