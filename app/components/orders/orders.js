@@ -9,7 +9,9 @@
  */
 angular.module('gameStoreApp')
     .controller('OrdersCtrl', function(orders, session, $log, $location, ngDialog, $rootScope) {
+
         var ordersSelf = this;
+
         ordersSelf.empty = true;
         ordersSelf.userName = session.get().userName;
         ordersSelf.baseUrl = orders.GetServiceBaseURL();
