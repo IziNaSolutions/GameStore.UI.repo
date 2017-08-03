@@ -17,7 +17,7 @@ angular.module('gameStoreApp')
          * Server URL
          *    - getting the server URL dynamically,
          *      without causing cross-domain error.
-         * @private
+         * @public
          */
 
         function GetServiceBaseURL() {
@@ -85,19 +85,19 @@ angular.module('gameStoreApp')
          *        uses $http to send http requests to the server.
          * @param {string} method : 'POST', 'PUT', 'GET', 'DELETE'.
          * @param {string} route
-         * 
-         * ... TODO add all the params...
-         * 
+         * @param {string} action
+         * @param {object} requestBody
+         * @param {tuple<name, value>[]} parameters
          * 
          * @return {object} http response
          */
-        var httpCall = function(method, route, action, request, parameters) {
+        var httpCall = function(method, route, action, requestBody, parameters) {
 
             $log.info('in httpCall:', {
                 method: method,
                 route: route,
                 action: action,
-                request: request,
+                request: requestBody,
                 parameters: parameters,
                 baseURL: baseURL,
             });
@@ -109,7 +109,7 @@ angular.module('gameStoreApp')
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                data: angular.toJson(request)
+                data: angular.toJson(requestBody)
             };
 
             $log.info("http config:", config);
@@ -130,7 +130,7 @@ angular.module('gameStoreApp')
          */
         var API = {
             httpCall: httpCall,
-            GetServiceBaseURL:GetServiceBaseURL
+            GetServiceBaseURL: GetServiceBaseURL,
         };
 
         /************ DONE *************/
