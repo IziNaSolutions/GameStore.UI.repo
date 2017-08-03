@@ -19,6 +19,7 @@ angular.module('gameStoreApp')
         bill.stock = true;
 
 
+
         bill.date = new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000).toLocaleDateString();
         getCartInfo();
 
@@ -65,12 +66,17 @@ angular.module('gameStoreApp')
                 orders.confirmNewOrder(bill.userName, 'USD', bill.date).then(function(res) {
                     console.log(res.status);
                     getCartInfo();
+                    bill.orderComplete = true;
                 })
             }
         };
 
         bill.backToCart = function() {
             $location.path('/cart');
+        };
+
+        bill.getToOrders = function() {
+            $location.path('/orders');
         };
 
 

@@ -17,6 +17,8 @@ angular
         'ngSanitize',
         'ngTouch',
         '720kb.datepicker',
+        'ngDialog',
+
     ])
     .config(function($routeProvider, $locationProvider) {
         $routeProvider
@@ -75,6 +77,11 @@ angular
                 templateUrl: 'components/register/register.html',
                 controller: 'RegisterCtrl',
                 controllerAs: 'register'
+            })
+            .when('/order_details', {
+                templateUrl: 'components\orderDetails\orderDetails.html',
+                controller: 'orderDetailsCtrl',
+                controllerAs: 'orderDetails'
             })
             .when('/pay', {
                 templateUrl: 'components/bill/bill.html',

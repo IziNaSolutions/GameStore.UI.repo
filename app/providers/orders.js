@@ -12,10 +12,16 @@ angular.module('gameStoreApp')
 
         ///////////// Initiate ///////////
 
+
+
         ///////////// Private Methods //////////
 
 
         //////////// Public Methods ////////////
+
+        var GetServiceBaseURL = function() {
+            return commonHttp.GetServiceBaseURL();
+        }
 
         var confirmNewOrder = function(userName, currency, shipDate) {
 
@@ -50,9 +56,30 @@ angular.module('gameStoreApp')
             });
         };
 
+
+        var getOrderGames = function(orderID) {
+
+            return commonHttp.httpCall(
+                'GET',
+                '/orders',
+                '/ getOrdersGames',
+                null, [{
+                    name: 'orderID',
+                    value: orderID
+                }]
+
+            ).then(function(response) {
+                return response.data;
+            });
+        }
+
+
+
         var API = {
             confirmNewOrder: confirmNewOrder,
             getPastOrders: getPastOrders,
+            getOrderGames: getOrderGames,
+            GetServiceBaseURL: GetServiceBaseURL,
         };
 
         return API;

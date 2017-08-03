@@ -10,6 +10,8 @@
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/angularjs-datepicker/dist/angular-datepicker.css" />
+    <link rel="stylesheet" href="bower_components/ng-dialog/css/ngDialog.css" />
+    <link rel="stylesheet" href="bower_components/ng-dialog/css/ngDialog-theme-default.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -56,7 +58,7 @@
                             <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hello {{user.userName}} <span class="caret" ng-if="user.isConnected"></span></a>
                             <ul class="dropdown-menu" ng-if="user.isConnected">
                                 <!-- TODO - actions for user: view my profile.. etc -->
-                                <li><a>TODO - actions for user</a></li>                                
+                                <li><a>TODO - actions for user</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a ng-click="logout()">Logout</a></li>
                             </ul>
@@ -129,6 +131,7 @@
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angularjs-datepicker/dist/angular-datepicker.js"></script>
+    <script src="bower_components/ng-dialog/js/ngDialog.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -153,6 +156,8 @@
     <script src="components/cart/cart.js"></script>
     <script src="components/bill/bill.js"></script>
     <script src="components/orders/orders.js"></script>
+
+    <!--<script src="components/orderDetails/orderDetails.js"></script>-->
     <!-- endbuild -->
 </body>
 

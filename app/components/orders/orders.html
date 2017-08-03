@@ -1,5 +1,5 @@
 <div style="display: table; margin: auto;">
-    <span class="step step_complete"> <a ng-click="ordersSelf.backToCart()" class="check-bc">Back to cart</a> <span class="step_line step_complete"> </span> <span class="step_line backline"> </span> </span>
+    <span class="step step_complete"> <a href="" ng-click="ordersSelf.backToCtalog()" class="check-bc">Back to Catalog</a> <span class="step_line step_complete"> </span> <span class="step_line backline"> </span> </span>
 
     <div class="row">
         <p></p>
@@ -25,10 +25,13 @@
                 </thead>
 
                 <tbody>
-                    <tr ng-hide="orders.empty" ng-repeat="order in ordersSelf.allOrders">
+                    <tr ng-hide="orderSelf.empty" ng-repeat="order in ordersSelf.allOrders">
                         <td data-th="Product">
                             <div class="row">
-                                <div class="col-sm-7">{{order.orderID}}</div>
+                                <div class="col-sm-7">
+                                    <a href="" ng-click="ordersSelf.clickToOpen(order.orderID)"> {{order.orderID}}</a>
+                                </div>
+
                             </div>
                         </td>
 
