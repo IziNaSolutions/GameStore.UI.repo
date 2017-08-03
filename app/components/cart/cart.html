@@ -1,3 +1,10 @@
+<div style="display: table; margin: auto;">
+
+
+    <div class="row">
+        <p></p>
+    </div>
+</div>
 <div class="container">
     <h1>Your Cart:</h1>
     <div>
@@ -17,7 +24,7 @@
                 </thead>
 
                 <tbody>
-                    <tr ng-repeat="product in cartSelf.cartProducts">
+                    <tr ng-show="cartSelf.show" ng-repeat="product in cartSelf.cartProducts">
                         <td data-th="Product">
                             <div class="row">
                                 <div class="col-sm-5"><img ng-src="{{cartSelf.baseUrl + product.image}}" alt="..." class="img-responsive" /></div>
@@ -30,14 +37,19 @@
                         <td data-th="Price">{{product.price}} $</td>
 
                         <td data-th="Quantity">
-                            <input type="number" class="form-control text-center" ng-value="{{product.amountInCart}}">
+                            <input type="number" min="1" max="5" ng-model="product.quantity" class="form-control text-center" ng-value="{{product.amountInCart}}">
                         </td>
 
                         <td data-th="Subtotal" class="text-center">{{product.amountInCart * product.price}} $</td>
 
                         <td class="actions" data-th="">
-                            <button class="btn btn-info btn-sm" ng-click="cartSelf.refresh();"><i class="fa fa-refresh"></i></button>
+                            <button class="btn btn-info btn-sm" ng-click="cartSelf.refresh(product);"><i class="fa fa-refresh"></i></button>
                             <button class="btn btn-danger btn-sm" ng-click="cartSelf.delete(product)"><i class="fa fa-trash-o"></i></button>
+                        </td>
+                    </tr>
+                    <tr ng-show="cartSelf.empty">
+                        <td>
+                            <h2>The cart is empty...</h2>
                         </td>
                     </tr>
                 </tbody>
@@ -47,10 +59,11 @@
                         <td class="text-center"><strong>Total: {{cartSelf.total}} $ </strong></td>
                     </tr>
                     <tr>
-                        <td><a href="#" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
+                        <td><a ng-click="cartSelf.navigateTo('catalog')" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
                         <td colspan="2" class="hidden-xs"></td>
                         <td class="hidden-xs text-center"><strong>Total: {{cartSelf.total}} $ </strong></td>
-                        <td><a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
+                        <td ng-show="cartSelf.show"> <a ng-click="cartSelf.navigateTo('pay')" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a>
+                        </td>
                     </tr>
                 </tfoot>
             </table>

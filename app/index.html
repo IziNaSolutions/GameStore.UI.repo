@@ -9,6 +9,9 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/angularjs-datepicker/dist/angular-datepicker.css" />
+    <link rel="stylesheet" href="bower_components/ng-dialog/css/ngDialog.css" />
+    <link rel="stylesheet" href="bower_components/ng-dialog/css/ngDialog-theme-default.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -21,20 +24,20 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <!-- Add your site or application content here -->    
+    <!-- Add your site or application content here -->
     <div class="header">
         <div class="navbar navbar-default" role="navigation">
             <div class="container">
-                <div class="navbar-header">                        
+                <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    
+
                     <a class="navbar-brand" href="#/">Games Store</a>
-                    
+
                 </div>
 
                 <div class="collapse navbar-collapse" id="js-navbar-collapse">
@@ -45,7 +48,7 @@
                         <li ng-repeat="item in menu" ng-class="{active: item.route == '#' + menuActive}" ng-if="item.roles.includes(user.role)">
                             <a href="{{::item.route}}">{{item.label}}</a>
                         </li>
-                    </ul>                    
+                    </ul>
                     <!-- Hello Dropdown -->
 
                     <!--TODO: (ng-if is connected) -->
@@ -54,7 +57,7 @@
                             <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hello {{user.userName}}  {{user.lastTime}}<span class="caret" ng-if="user.isConnected"></span></a>
                             <ul class="dropdown-menu" ng-if="user.isConnected">
                                 <!-- TODO - actions for user: view my profile.. etc -->
-                                <li><a>TODO - actions for user</a></li>                                
+                                <li><a href="#/orders">Orders History</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a ng-click="logout()">Logout</a></li>
                             </ul>
@@ -126,21 +129,25 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/angularjs-datepicker/dist/angular-datepicker.js"></script>
+    <script src="bower_components/ng-dialog/js/ngDialog.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="app.js"></script>
-    <script src="components/main/main.js"></script>
-    <script src="components/about/about.js"></script>
+
     <script src="providers/auth.js"></script>
     <script src="providers/commonhttp.js"></script>
-    <script src="components/login/login.js"></script>
     <script src="providers/session.js"></script>
     <script src="providers/cart.js"></script>
     <script src="providers/products.js"></script>
     <script src="providers/orders.js"></script>
     <script src="providers/clients.js"></script>
+
+    <script src="components/main/main.js"></script>
+    <script src="components/about/about.js"></script>
+    <script src="components/login/login.js"></script>
     <script src="components/clientsManagement/clientsManagement.js"></script>
     <script src="components/ordersManagement/ordersManagement.js"></script>
     <script src="components/inventory/inventory.js"></script>
@@ -149,9 +156,11 @@
     <script src="components/register/registerService.js"></script>
     <script src="components/cart/cart.js"></script>
     <script src="components/bill/bill.js"></script>
-    <script src="components/orders/orders.js"></script>    
+    <script src="components/orders/orders.js"></script>
+    <script src="components/orderDetails/orderDetails.js"></script>
+
     <!-- endbuild -->
-    
+
 </body>
 
 </html>

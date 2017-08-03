@@ -1,1 +1,120 @@
-<p>This is the bill view.</p>
+<div class="container wrapper" ng-hide="bill.orderComplete">
+    <div class="row cart-head">
+        <div class="container">
+            <div class="row">
+                <p></p>
+            </div>
+            <div class="row">
+                <div style="display: table; margin: auto;">
+                    <div class="row">
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+            <div class="row cart-body">
+                <form class="form-horizontal" method="post" action="">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-md-push-6 col-sm-push-6">
+                        <!--REVIEW ORDER-->
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                Review Order
+                                <div class="pull-right"><small><a class="afix-1" href="" ng-click="bill.backToCart()">Edit Cart</a></small></div>
+                            </div>
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <div ng-repeat="product in bill.cartProducts">
+                                        <div class="col-sm-3 col-xs-3">
+                                            <img class="img-responsive" ng-src="{{bill.baseUrl + product.image}}" />
+                                        </div>
+                                        <div class="col-sm-6 col-xs-6">
+                                            <div class="col-xs-12">{{product.gameName}}</div>
+                                            <div class="col-xs-12"><small>Quantity:<span>{{product.amountInCart}}</span></small></div>
+                                            <div class="col-xs-12" ng-show="product.stock<product.amountInCart"><small>In stock:<span><font color="red">{{product.stock}}</font></span></small></div>
+                                            <div ng-show="product.stock>=product.amountInCart" class="col-xs-12"><small>In stock:<span><font color="blue">{{product.stock}}</font></span></small></div>
+                                        </div>
+                                        <div class="col-sm-3 col-xs-3 text-right">
+                                            <h6><span>$</span>{{product.amountInCart * product.price}}</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <hr />
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-xs-12">
+                                        <strong>Order Total</strong>
+                                        <div class="pull-right"><span>$</span><span>{{bill.total}}</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--REVIEW ORDER END-->
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-md-pull-6 col-sm-pull-6">
+                        <!--SHIPPING METHOD-->
+                        <div class="panel panel-info">
+                            <div class="panel-heading">Shipment Date</div>
+                            <div class="panel-body">
+                                <label ng-show="bill.dateBad" style="color:red;">Choose a shipment date to at least one weak from today <br><br></label>
+                                <label ng-show="!bill.dateBad">Click to choose shipment date                        
+                        <br> <br> <br></label>
+
+                                <datepicker datepicker-toggle="true" style="color:blue">
+                                    <input ng-model="bill.date" type="text" ng-change="bill.chooseDate()" />
+                                </datepicker>
+                            </div>
+                        </div>
+                        <!--SHIPPING METHOD END-->
+                        <!--CREDIT CART PAYMENT-->
+                        <div class="panel panel-info ">
+                            <div class="panel-heading "><span><i class="glyphicon glyphicon-lock "></i></span> Secure Payment</div>
+                            <div class="panel-body ">
+                                <div class="form-group ">
+                                    <div class="col-md-12 "><strong>Card Type:</strong></div>
+                                    <div class="col-md-12 ">
+                                        <select id="CreditCardType " name="CreditCardType " class="form-control ">
+                                        <option value="5 ">Visa</option>
+                                        <option value="6 ">MasterCard</option>
+                                        <option value="7 ">American Express</option>
+                                        <option value="8 ">Discover</option>
+                                    </select>
+                                    </div>
+                                </div>
+                                <div class="form-group ">
+                                    <div class="col-md-12 "><strong>Credit Card Number:(16 digits)</strong></div>
+                                    <div class="col-md-12 "><input type="text" ng-model="bill.creditCard" class="form-control " name="car_number " value=" " /></div>
+                                </div>
+                            </div>
+
+                            <div class="form-group ">
+                                <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                    <td ng-show="cartSelf.show"> <a ng-click="bill.payment()" class="btn btn-success btn-block">Place order <i class="fa fa-angle-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--CREDIT CART PAYMENT END-->
+            </div>
+
+            </form>
+        </div>
+        <div class="row cart-footer ">
+
+        </div>
+    </div>
+</div>
+
+
+
+<div ng-show="bill.orderComplete">
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            Your Order Is On The Way!
+        </div>
+        <div class="panel-body">
+            <div class="form-group">
+                The Order was created and you can see it <a href="" ng-click="bill.getToOrders()">here</a>
+            </div>
+        </div>
+    </div>
+</div>

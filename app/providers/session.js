@@ -14,7 +14,7 @@
  * @param $rootScope
  */
 angular.module('gameStoreApp')
-    .service('session', function($cookies, $rootScope, $log) {
+    .service('session', function($cookies, $rootScope, $log, $location) {
 
         ///////////// Initiate ///////////
 
@@ -27,6 +27,54 @@ angular.module('gameStoreApp')
         }
 
         var _cookieKey = 'GameStoreUser';
+
+        //////// init menu ////////////
+
+        if ($rootScope.menu === undefined) {
+
+            $rootScope.menu = [{
+                    label: 'Home',
+                    route: '#/',
+                    roles: ['guest', 'user', 'admin']
+                },
+                {
+                    label: 'Login',
+                    route: '#/login',
+                    roles: ['guest']
+                },
+                {
+                    label: 'Cart',
+                    route: '#/cart',
+                    roles: ['user', 'admin']
+                },
+                {
+                    label: 'Register',
+                    route: '#/register',
+                    roles: ['guest']
+                },
+                {
+                    label: 'About',
+                    route: '#/about',
+                    roles: ['guest', 'user', 'admin']
+                },
+                {
+                    label: 'Catalog',
+                    route: '#/catalog',
+                    roles: ['guest', 'user', 'admin']
+                },
+            ];
+
+            $rootScope.menuActive = '/';
+        }
+
+        $rootScope.$on('$routeChangeSuccess', function(e, curr, prev) {
+            $rootScope.menuActive = $location.path();
+
+            // $log.debug("user:", $rootScope.user);
+            // $log.debug('e:', e);
+            // $log.debug('curr:', curr);
+            // $log.debug('prev:', prev);
+        });
 
         ///////////// Private Methods //////////
 

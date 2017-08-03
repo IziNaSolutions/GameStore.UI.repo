@@ -34,6 +34,10 @@ angular.module('gameStoreApp')
             });
         };
 
+        var GetServiceBaseURL = function() {
+            return commonHttp.GetServiceBaseURL();
+        }
+
         var addToCart = function(gameName, amount, userName) {
             $log.debug('in cart.addToCart( ' + userName + ', ' + gameName + ', ' + amount + ' )');
 
@@ -51,9 +55,40 @@ angular.module('gameStoreApp')
             });
         };
 
+        var updateItemAmountAtCart = function(gameName, amount, userName) {
+            if (amount === 0) {
+                return commonHttp.httpCall(
+                    'DELETE',
+                    '/cart',
+                    '/deleteItemFromCart', {
+                        userName: userName,
+                        gameName: gameName,
+                    },
+                    null
+                ).then(function(response) {
+                    return response.data;
+                });
+            } else {
+                return commonHttp.httpCall(
+                    'PUT',
+                    '/cart',
+                    '/updateItemAmountAtCart', {
+                        userName: userName,
+                        gameName: gameName,
+                        amount: amount,
+                    },
+                    null
+                ).then(function(response) {
+                    return response.data;
+                });
+            }
+        };
+
         var API = {
             getCartInfo: getCartInfo,
             addToCart: addToCart,
+            updateItemAmountAtCart: updateItemAmountAtCart,
+            GetServiceBaseURL: GetServiceBaseURL,
         };
 
         return API;

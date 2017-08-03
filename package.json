@@ -42,6 +42,7 @@
     "test": "karma start test\\karma.conf.js"
   },
   "dependencies": {
+    "angularjs-datepicker": "^2.1.23",
     "gulp": "^3.9.1"
   }
 }
