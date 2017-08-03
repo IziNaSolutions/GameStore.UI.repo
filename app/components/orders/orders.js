@@ -37,10 +37,10 @@ angular.module('gameStoreApp')
         };
 
 
-        ordersSelf.clickToOpen = function(orderId) {
-            $rootScope.orderID = orderId;
-            console.log(orderId);
-            ngDialog.open({ template: ordersSelf.baseUrl + 'order_details.html', className: 'ngdialog-theme-default' });
-        };
+        // ordersSelf.clickToOpen = function(orderId) {
+        //     $rootScope.orderID = orderId;
+        //     console.log(orderId);
+        //     ngDialog.open({ template: ordersSelf.baseUrl + 'order_details.html', className: 'ngdialog-theme-default' });
+        // };
 
     });

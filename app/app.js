@@ -78,9 +78,9 @@ angular
                 controller: 'RegisterCtrl',
                 controllerAs: 'register'
             })
-            .when('/order_details', {
-                templateUrl: 'components\orderDetails\orderDetails.html',
-                controller: 'orderDetailsCtrl',
+            .when('/order_details/:orderID', {
+                templateUrl: 'components/orderDetails/orderDetails.html',
+                controller: 'OrderDetailsCtrl',
                 controllerAs: 'orderDetails'
             })
             .when('/pay', {
