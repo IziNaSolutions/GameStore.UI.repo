@@ -35,6 +35,11 @@ angular
                 controller: 'LoginCtrl',
                 controllerAs: 'login'
             })
+            .when('/postlogin', {
+                templateUrl: 'components/login/postLogin.html',
+                controller: 'CatalogCtrl',
+                controllerAs: 'catalog'
+            })
             .when('/bill', {
                 templateUrl: 'components/bill/bill.html',
                 controller: 'BillCtrl',

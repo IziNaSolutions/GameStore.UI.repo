@@ -1,0 +1,24 @@
+
+<h1>Top 5 - most purchesd from last week </h1>
+<div class="content">
+    <ul id="game-list">
+      <li  ng-repeat="game in catalog.topGames">
+          <br>
+        <img ng-src="{{catalog.baseUrl +game.picPath}}" style="margin: -12px 10px 0 0; float:left ;width:50px;"
+             ng-show="game.picPath"/>
+        <h3>{{game.gameName}} ,sales last week: {{game.Total}}</h3>
+      </li>
+    </ul>
+</div>
+
+<h1>New available games (added to the store at the last month) </h1>
+<div class="content">
+    <ul id="game-list">
+      <li  ng-repeat="game in catalog.MonthGames">
+          <br>
+        <img ng-src="{{catalog.baseUrl + game.picPath}}" style="margin: -12px 10px 0 0; float:left ;width:50px;"
+             ng-show="game.picPath"/>
+        <h3>{{game.gameName}}</h3>
+      </li>
+    </ul>
+</div>

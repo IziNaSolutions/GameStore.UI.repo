@@ -72,6 +72,7 @@ angular.module('gameStoreApp')
                         $rootScope.user.userName = result.userName;
                         $rootScope.user.role = result.type;
                         $rootScope.user.lastTime = result.lastTime;
+                        alert('last connection was: ' + $rootScope.user.lastTime);
 
                         // Example:
                         login.message.text = result.formattedString;
@@ -86,7 +87,7 @@ angular.module('gameStoreApp')
                         }
 
                         // navigate after login to homepage
-                        $location.path('/catalog');
+                        $location.path('/postlogin');
 
                     } else {
                         login.message.text = result;

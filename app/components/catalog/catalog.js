@@ -18,7 +18,7 @@ angular.module('gameStoreApp')
 
     catalog.baseUrl = commonHttp.GetServiceBaseURL();
     catalog.user = session.get().userName;
-    
+
     products.getAllProduct()
             .then(function(res) {
                 $log.info("getAllProduct response:", res);
@@ -31,8 +31,24 @@ angular.module('gameStoreApp')
                 });
 
             });
+
+      products.getTopFive()
+            .then(function(res) {
+                $log.info("getTopFive response:", res);
+                catalog.topGames = res;                
+                products.getLastMonthItems()                
+                .then(function(res)
+                {
+                  $log.info("getLastMonthItems response:", res);
+                  catalog.MonthGames = res;                  
+                });
+
+            });
   
       });
+
+      
+          
   
 
 

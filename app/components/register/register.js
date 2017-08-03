@@ -58,6 +58,7 @@ angular.module('gameStoreApp')
       let _secAns = register.user.secondQ;
       validation = (Math.max(_secAns.length, maxLength) === maxLength) ? true : false
 
+      if(!_userName){alert('please provide 3 to 8 letters username');}
       if (_rePassord != _password) {
         alert("Paswword doesn't match!\n Please insert match passwords!")
         return;
@@ -78,6 +79,12 @@ angular.module('gameStoreApp')
           alert("The user name that supplied illegal\n Please insert between 3 and 8 letters!")
           return false;
         }
+        validCheck = (/^[0-9]+$/.test(_phone));
+        if (!validCheck) {
+          alert("phone must contains digit only!")
+          return false;
+        }
+
         validCheck = validCheck && !(password.length < 5 || password.length > 10 || !(/^[0-9a-zA-Z]+$/.test(password)));
         if (!validCheck) {
           alert("The password not llegal\n Make sure the password contains at least one digit and not allowing special characters!")

@@ -1,12 +1,11 @@
-<p>This is the catalog view.</p>
 
-
-
+<h2>This is the catalog view.</h2>
 <div class="content">  
       <button ng-click="order= 'gameName' ">order by name</button>
       <button ng-click="order= 'category'">order by category</button>
       <button ng-click="order= 'publisher'">order by publisher</button>
-      <br>
+      <br><br>
+      <label>Filters: </label>
     <input type="text" ng-model="search" placeholder="search for a game">
     <input type="text" ng-model="searchCategory" placeholder="search for a category">
     <ul id="game-list">
@@ -19,7 +18,7 @@
     </ul>
 </div>
 
-<h1>Recommandation for you:</h1>
+<h2>Recommandation for you:</h2>
 <div class="content">
     <ul id="game-list">
       <li  ng-repeat="rec in catalog.Recgames">
