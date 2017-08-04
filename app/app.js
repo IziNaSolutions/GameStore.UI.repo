@@ -67,7 +67,7 @@ angular
                 templateUrl: 'components/gamesManagement/gamesmanagement.html',
                 controller: 'GamesManagementCtrl',
                 controllerAs: 'gamesManagement'
-            })             
+            })
             .when('/inventory', {
                 templateUrl: 'components/inventory/inventory.html',
                 controller: 'InventoryCtrl',

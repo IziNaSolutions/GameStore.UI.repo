@@ -18,6 +18,7 @@ angular.module('gameStoreApp')
 
         ///////////// Initiate ///////////
 
+
         if ($rootScope.user === undefined) {
             $rootScope.user = {
                 isConnected: false,
@@ -25,6 +26,11 @@ angular.module('gameStoreApp')
                 userName: 'Guest',
             };
         }
+
+        if ($location.path() === '/404')
+            $rootScope.showHeaders = false;
+        else
+            $rootScope.showHeaders = true;
 
         var _cookieKey = 'GameStoreUser';
 

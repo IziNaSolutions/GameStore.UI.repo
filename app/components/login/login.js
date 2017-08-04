@@ -8,7 +8,7 @@
  * Controller of the gameStoreApp
  */
 angular.module('gameStoreApp')
-    .controller('LoginCtrl', function($location, $log, auth, $rootScope, session,clients) {
+    .controller('LoginCtrl', function($location, $log, auth, $rootScope, session, clients) {
 
         /********* init **********/
 
@@ -27,24 +27,22 @@ angular.module('gameStoreApp')
         login.recPass = '';
 
         /********** functions ******/
-        login.recoverPass = function(){
-            clients.recoverPassword(login.recoverUserName,login.ans1,login.ans2).then(function(res) {
+        login.recoverPass = function() {
+            clients.recoverPassword(login.recoverUserName, login.ans1, login.ans2).then(function(res) {
                 $log.info("recoverPass response:", res);
-                
-                if(!res){
+
+                if (!res) {
                     login.recPass = false;
-                    if(!login.recoverUserName) {
+                    if (!login.recoverUserName) {
                         alert('please fill user name in order to recover password')
                     }
-                    if(!login.ans1){
+                    if (!login.ans1) {
                         alert('please fill firt answer in order to recover password')
                     }
-                    if(!login.ans2){
+                    if (!login.ans2) {
                         alert('please fill second answer in order to recover password')
-                    }
-                    else(alert('cannot recover password please re check you entries'))
-                } 
-                else{login.recPass = res["0"].password; }
+                    } else(alert('cannot recover password please re check you entries'))
+                } else { login.recPass = res["0"].password; }
             });
         }
 
@@ -57,7 +55,7 @@ angular.module('gameStoreApp')
             auth.login(login.inputUserName, login.inputPassword)
                 .then(function(result) {
 
-                    if(!result){
+                    if (!result) {
                         login.message = {
                             text: 'connection to the server fail, please check your internet connection',
                             class: 'label label-danger',
@@ -71,7 +69,7 @@ angular.module('gameStoreApp')
                         $rootScope.user.isConnected = true;
                         $rootScope.user.userName = result.userName;
                         $rootScope.user.role = result.type;
-                        $rootScope.user.lastTime = result.lastTime;
+                        $rootScope.user.lastTime = new Date((new Date(result.lastTime)).getTime() + 7 * 24 * 60 * 60 * 1000).toLocaleDateString();
                         alert('last connection was: ' + $rootScope.user.lastTime);
 
                         // Example:
@@ -100,4 +98,4 @@ angular.module('gameStoreApp')
 
     }); // angular.controller
 
-    // TODO: fix redirect doesn't working after login
+// TODO: fix redirect doesn't working after login

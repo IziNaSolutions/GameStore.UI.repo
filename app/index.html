@@ -25,7 +25,7 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="header">
+    <div class="header" ng-show="showHeaders">
         <div class="navbar navbar-default" role="navigation">
             <div class="container">
                 <div class="navbar-header">
@@ -54,33 +54,25 @@
                     <!--TODO: (ng-if is connected) -->
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hello {{user.userName}}  {{user.lastTime}}<span class="caret" ng-if="user.isConnected"></span></a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hello {{user.userName}}<span class="caret" ng-if="user.isConnected"></span></a>
                             <ul class="dropdown-menu" ng-if="user.isConnected">
                                 <!-- TODO - actions for user: view my profile.. etc -->
                                 <li><a href="#/orders">Orders History</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a ng-click="logout()">Logout</a></li>
                             </ul>
+                            <li>
+                            </li>
+                            <li ng-class="{active: item.route == '#' + menuActive}" ng-if="user.isConnected">
+                                <a>
+                                    <font color=purple>Your last visit: {{user.lastTime}}</font>
+                                </a>
+                            </li>
                         </li>
+
                     </ul>
 
-                    <!-- TODO: change 'active' on route change event -->
-                    <!--<li ng-class="'active'"><a href="#/">Home</a></li>-->
 
-                    <!--<li><a ng-href="#/about">About</a></li>-->
-
-                    <!--TODO: (ng-if not connected)-->
-                    <!--<li><a ng-href="#/login">Login</a></li>-->
-
-                    <!--TODO: cart component (ng-if connected)-->
-                    <!--<li><a>Cart</a></li>-->
-
-                    <!--TODO: for all (but some of it will be ng-if connected)-->
-                    <!--<li><a>Catalog</a></li>-->
-
-                    <!--TODO: Admin Dropdown (ng-if admin)-->
-
-                    <!--TODO: Hello Dropdown (ng-if connected)-->
 
                     </ul>
                 </div>
@@ -92,7 +84,7 @@
         <div ng-view=""></div>
     </div>
 
-    <div class="footer">
+    <div class="footer" ng-show="showHeaders">
         <div class="container">
             <p>
                 Developers:
@@ -103,6 +95,10 @@
             </p>
         </div>
     </div>
+
+    <!-- custom: XML to JSON Library -->
+    <script src="xml/xml2json.js"></script>
+    <!-- custom -->
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
