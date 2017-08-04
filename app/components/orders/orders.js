@@ -8,7 +8,7 @@
  * Controller of the gameStoreApp
  */
 angular.module('gameStoreApp')
-    .controller('OrdersCtrl', function(orders, session, $log, $location) {
+    .controller('OrdersCtrl', function (orders, session, $log, $location) {
 
         var ordersSelf = this;
 
@@ -17,22 +17,19 @@ angular.module('gameStoreApp')
         ordersSelf.baseUrl = orders.GetServiceBaseURL();
 
         orders.getPastOrders(ordersSelf.userName)
-            .then(function(res) {
+            .then(function (res) {
                 $log.info("getPastOrders response:", res);
                 ordersSelf.allOrders = res;
                 if (ordersSelf.allOrders.length > 0)
                     ordersSelf.empty = false;
 
                 for (var i = 0; i < ordersSelf.allOrders.length; i++) {
-                    ordersSelf.allOrders[i].orderDate = new Date((new Date(ordersSelf.allOrders[i].orderDate)).getTime() + 7 * 24 * 60 * 60 * 1000).toLocaleDateString();
-                    ordersSelf.allOrders[i].shipmentDate = new Date((new Date(ordersSelf.allOrders[i].shipmentDate)).getTime() + 7 * 24 * 60 * 60 * 1000).toLocaleDateString();
+                    ordersSelf.allOrders[i].orderDate = new Date(ordersSelf.allOrders[i].orderDate).toLocaleDateString();
+                    ordersSelf.allOrders[i].shipmentDate = new Date(ordersSelf.allOrders[i].shipmentDate).toLocaleDateString();
                 }
-
-
-
             });
 
-        ordersSelf.backToCtalog = function() {
+        ordersSelf.backToCtalog = function () {
             $location.path('/catalog');
         };
 

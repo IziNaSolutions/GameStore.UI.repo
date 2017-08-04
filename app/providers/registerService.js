@@ -8,10 +8,10 @@
  * Service in the gameStoreApp.
  */
 angular.module('gameStoreApp')
-    .service('registerService', function (commonHttp, $location) {
+    .service('registerService', function (commonHttp, $location,session) {
         // AngularJS will instantiate a singleton by calling "new" on this function
         var baseUrl = commonHttp.GetServiceBaseURL();
-
+        
 
         var registerNewUser = function (userName, password, firstName, lastName, country, address, phone, ansFirstQ, ansSecondQ, categories) {
             return commonHttp.httpCall(
@@ -31,9 +31,10 @@ angular.module('gameStoreApp')
                 }, null
             ).then(function (response) {
                 alert(response.data);
-                if (!user.isConnected) {
+                if (!session.get().isConnected) {
                     $location.path('/login');
                 }
+                else $location.path('/clientsManagement');
                 return response.data;
             });
         }
@@ -54,8 +55,10 @@ angular.module('gameStoreApp')
                 }
                 countries = display2;
                 return countries;
-            });
+            });            
         }
+
+        
 
         var API = {
             registerNewUser: registerNewUser,

@@ -8,16 +8,28 @@
  * Controller of the gameStoreApp
  */
 angular.module('gameStoreApp')
-  .controller('CatalogCtrl', function (commonHttp, session, $rootScope, products, $log, cart) {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('CatalogCtrl', function (commonHttp, session, $rootScope, products, $log, cart, ngDialog) {
+    
     var catalog = this;
-
     catalog.baseUrl = commonHttp.GetServiceBaseURL();
+
     catalog.user = session.get().userName;
+
+    
+    catalog.showProduct = function (gameName) {
+      products.getGame(gameName)
+      .then(function (res) {
+       $log.info("getGame response:", res);
+        catalog.detailedGame = res;
+      }
+      );      
+      ngDialog.open({                     
+        template: '#/inventory'
+
+      });
+
+
+    };
 
     products.getAllProduct()
       .then(function (res) {
@@ -43,11 +55,10 @@ angular.module('gameStoreApp')
 
       });
 
-    catalog.addToCart = function (game,amout,user) {
-      cart.addToCart(game,amout,user).then(function(res){
-        alert('one unit of game '+game+' was added to cart\n If you want to edit to amount in cart please enter your cart');
-      })
-      ;
+    catalog.addToCart = function (game, amout, user) {
+      cart.addToCart(game, amout, user).then(function (res) {
+        alert('one unit of game ' + game + ' was added to cart\n If you want to edit to amount in cart please enter your cart');
+      });
     }
 
   });

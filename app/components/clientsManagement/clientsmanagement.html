@@ -4,8 +4,23 @@
     <input type="button" class="btn btn-lg btn-primary" value="add a new user" ng-click="clientsManagement.register()">
     <h3>choose user to delete </h3>    
     <select class="C" ng-model="deleted" ng-options="user.userName for user in clientsManagement.users" required autofocus>
-    <option value=""></option>
+    <option value="">Choose user</option>
     </select>
     <input type="submit" class="btn btn-danger" value="Submit" ng-click="clientsManagement.deleteUser(deleted.userName)">    
+
+    <h3>set/unset admin </h3>  
+    <label>Choose user </label>
+    <select class="C" ng-model="setUsers" ng-options="user.userName for user in clientsManagement.users" required autofocus>
+    <option value="">Choose user</option>
+    </select>
+    <label>set admin value </label>
+    <select class="C" ng-model="setvalue" required autofocus>
+    <option value="">set value</option>
+    <option value=0>0</option>
+    <option value=1>1</option>
+    
+    <input type="submit" class="btn btn-success" value="Submit" ng-click="clientsManagement.setAdmin(setUsers.userName,setvalue)">    
+    
+    
 </div>
 <br>

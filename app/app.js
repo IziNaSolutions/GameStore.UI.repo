@@ -17,7 +17,7 @@ angular
         'ngSanitize',
         'ngTouch',
         '720kb.datepicker',
-        'ngDialog',
+        'ngDialog'
 
     ])
     .config(function($routeProvider, $locationProvider) {
@@ -45,6 +45,7 @@ angular
                 controller: 'CatalogCtrl',
                 controllerAs: 'catalog'
             })
+            
             .when('/bill', {
                 templateUrl: 'components/bill/bill.html',
                 controller: 'BillCtrl',
@@ -59,6 +60,12 @@ angular
                 templateUrl: 'components/catalog/catalog.html',
                 controller: 'CatalogCtrl',
                 controllerAs: 'catalog'
+            })    
+            .when('/gameDetails', {
+                templateUrl: 'components/catalog/gameDetails.html',
+                controller: 'ClientsManagementCtrl',
+                controllerAs: 'clientsManagement'
+
             })
             .when('/clientsManagement', {
                 templateUrl: 'components/clientsManagement/clientsManagement.html',
