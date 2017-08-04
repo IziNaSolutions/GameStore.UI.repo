@@ -46,7 +46,7 @@ angular.module('gameStoreApp')
                 '/cart',
                 '/addToCart', {
                     userName: userName,
-                    game: gameName,
+                    gameName: gameName,
                     amount: amount
                 },
                 null

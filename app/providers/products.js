@@ -113,13 +113,13 @@ angular.module('gameStoreApp')
       });
     }
 
-    var addGame = function (gameName,desc,picPath,publisher,price,stokeAmount,category){
+    var addGame = function (gameName,description,picPath,publisher,price,stokeAmount,category){
       return commonHttp.httpCall(
         'POST',
         '/games',
         '/addGame', {
           gameName : gameName,
-          desc : desc,
+          description : description,
           picPath : picPath,
           publisher : publisher,
           price : price,
@@ -128,6 +128,7 @@ angular.module('gameStoreApp')
         },
         null
       ).then(function (response) {
+        alert('the game '+ gameName + ' was added completed!\n Yei!')
         return response.data;
       });
     }

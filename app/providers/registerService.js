@@ -8,12 +8,12 @@
  * Service in the gameStoreApp.
  */
 angular.module('gameStoreApp')
-    .service('registerService', function(commonHttp, $location) {
+    .service('registerService', function (commonHttp, $location) {
         // AngularJS will instantiate a singleton by calling "new" on this function
         var baseUrl = commonHttp.GetServiceBaseURL();
 
 
-        var registerNewUser = function(userName, password, firstName, lastName, country, address, phone, ansFirstQ, ansSecondQ, categories) {
+        var registerNewUser = function (userName, password, firstName, lastName, country, address, phone, ansFirstQ, ansSecondQ, categories) {
             return commonHttp.httpCall(
                 'POST',
                 '/users',
@@ -29,7 +29,7 @@ angular.module('gameStoreApp')
                     ansSecondQ: ansSecondQ,
                     categories: categories
                 }, null
-            ).then(function(response) {
+            ).then(function (response) {
                 alert('Registration completed!\n Now you can log in')
                 $location.path('/login')
                 return response.data;
@@ -41,8 +41,8 @@ angular.module('gameStoreApp')
                 'GET',
                 '/xml',
                 '/countries.xml',
-                null, null
-            ).then(function(response) {
+                {'Access-Control-Allow-Origin': '*'}, null
+            ).then(function (response) {
                 var x2js = new X2JS();
                 let conv = x2js.xml_str2json(response.data);
                 let countries = conv['Countries']['Country'];
