@@ -8,12 +8,12 @@
  * Controller of the gameStoreApp
  */
 angular.module('gameStoreApp')
-    .controller('RegisterCtrl', function(commonHttp, registerService, $location, $log) {
+    .controller('RegisterCtrl', function(commonHttp, registerService) {
 
         var register = this;
         registerService.getCountries().then(function(res) {
             register.countries = res;
-        })
+        });
 
 
         register.user = { userName: '', password: '', re_password: '', firstName: '', lastName: '', phone: '', country: '', address: '', faveGenre1: '', faveGenre2: '', firstQ: '', secondQ: '' };

@@ -8,7 +8,7 @@
  * Service in the gameStoreApp.
  */
 angular.module('gameStoreApp')
-    .service('registerService', function(commonHttp, $location, $http) {
+    .service('registerService', function(commonHttp, $location) {
         // AngularJS will instantiate a singleton by calling "new" on this function
         var baseUrl = commonHttp.GetServiceBaseURL();
 
