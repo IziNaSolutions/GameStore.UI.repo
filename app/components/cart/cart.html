@@ -11,7 +11,7 @@
 
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
         <div class="container">
-            <table id="cart" class="table table-hover table-condensed">
+            <table id="cart" class="table table-hover table-condensed" ng-hide="cartSelf.empty">
 
                 <thead>
                     <tr>
@@ -51,11 +51,7 @@
                             <button class="btn btn-danger btn-sm" ng-click="cartSelf.delete(product)"><i class="fa fa-trash-o"></i></button>
                         </td>
                     </tr>
-                    <tr ng-show="cartSelf.empty">
-                        <td>
-                            <h2>The cart is empty...</h2>
-                        </td>
-                    </tr>
+
                 </tbody>
 
                 <tfoot>
@@ -71,6 +67,10 @@
                     </tr>
                 </tfoot>
             </table>
+
+
+            <h2 ng-show="cartSelf.empty">The cart is empty...</h2>
+
         </div>
 
         <!--jumbotron end-->

@@ -8,16 +8,20 @@
  * Controller of the gameStoreApp
  */
 angular.module('gameStoreApp')
-    .controller('RegisterCtrl', function(commonHttp, registerService) {
+    .controller('RegisterCtrl', function (session,commonHttp, registerService) {
 
         var register = this;
+
         registerService.getCountries().then(function(res) {
-            register.countries = res;
+           register.countries = res;
         });
-        
+
+
+
+
 
         register.user = { userName: '', password: '', re_password: '', firstName: '', lastName: '', phone: '', country: '', address: '', faveGenre1: '', faveGenre2: '', firstQ: '', secondQ: '' };
-        register.game = { gameName: '', desc: '', picPath: '', publisher: '', price: '', stokeAmount: '', category: ''};
+        register.game = { gameName: '', desc: '', picPath: '', publisher: '', price: '', stokeAmount: '', category: '' };
 
         register.genres = {
             0: 'Action',
@@ -28,7 +32,7 @@ angular.module('gameStoreApp')
             5: 'Vehicular combat'
         }
 
-        register.reg = function() {
+        register.reg = function () {
             let maxLength = 50;
             let _userName = register.user.userName;
             let _password = register.user.password;
@@ -62,7 +66,7 @@ angular.module('gameStoreApp')
                 return;
             }
 
-            var validity = function(userName, password) {
+            var validity = function (userName, password) {
                 let validCheck = !(userName.length < 3 || userName.length > 8 || !(/^[a-zA-Z]+$/.test(userName)));
                 if (!validCheck) {
                     alert("The user name that supplied illegal\n Please insert between 3 and 8 letters!")
@@ -86,6 +90,6 @@ angular.module('gameStoreApp')
             if (!validity(_userName, _password))
                 return;
             registerService.registerNewUser(_userName, _password, _firstName, _lastName, _country, _address, _phone, _firstAns, _secAns, _categories);
-        }
-        
+        }        
+
     });

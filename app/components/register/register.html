@@ -37,8 +37,10 @@
     <!-- country -->
     <div class="form-group">
         <label>Choose country:</label>
-        <select class="C" ng-model=" register.user.country" ng-options="country for country in register.countries" ng-required="true" />
-
+        <select class="C" ng-model=" registerCtrl.user.country" ng-options="country for country in registerCtrl.countries" ng-required="true">
+        <option value="">Choose your country</option>
+        </select>
+        
     </div>
 
     <!-- fields field -->
@@ -53,9 +55,12 @@
         <input type="text" name="Address" class="form-control" ng-model="registerCtrl.user.address" ; required autofocus>
         <label>Phone</label>
         <input type="text" name="Phone" class="form-control" ng-model="registerCtrl.user.phone" ; required autofocus>
+                
     </div>
 
     <div class="form-group">
+        
+        
         <input type="submit" class="btn btn-lg btn-primary btn-block" value="Submit" ng-click="registerCtrl.reg()">
     </div>
 

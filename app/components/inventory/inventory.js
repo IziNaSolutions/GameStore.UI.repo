@@ -8,7 +8,7 @@
  * Controller of the gameStoreApp
  */
 angular.module('gameStoreApp')
-  .controller('InventoryCtrl', function (commonHttp, products, $log) {
+  .controller('InventoryCtrl', function (session,commonHttp, products, $log) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',

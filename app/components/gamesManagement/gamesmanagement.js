@@ -8,16 +8,20 @@
  * Controller of the gameStoreApp
  */
 angular.module('gameStoreApp')
-  .controller('GamesManagementCtrl', function (commonHttp, products,$log,$location) {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('GamesManagementCtrl', function (session,commonHttp, products,$log,$location) {
+    
 
     var gamesManagement = this;
     gamesManagement.baseUrl = commonHttp.GetServiceBaseURL();
     gamesManagement.game = { gameName: '', desc: '', picPath: '', publisher: '', price: '', stokeAmount: '', category: ''};
+
+    function check() {
+      if (session.get().userName == 'Guest') {
+        session.hideHeaders();
+        $location.path('/404');
+      }
+    }
+    check();
 
     gamesManagement.genres = {
             0: 'Action',
