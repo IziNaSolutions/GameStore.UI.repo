@@ -11,21 +11,9 @@ angular.module('gameStoreApp')
     .controller('RegisterCtrl', function(commonHttp, registerService, $location, $log) {
 
         var register = this;
-
-
-
-        // TODO delete tests:
-
-        // Create x2js instance with default config
-        var x2js = new X2JS();
-
-        // load file.. here
-        var xmlText = "<MyRoot><test>Success</test><test2><item>val1</item><item>val2</item></test2></MyRoot>";
-        var jsonObj = x2js.xml_str2json(xmlText);
-
-        $log.info('json:', jsonObj);
-
-        // end test
+        registerService.getCountries().then(function(res) {
+            register.countries = res;
+        })
 
 
         register.user = { userName: '', password: '', re_password: '', firstName: '', lastName: '', phone: '', country: '', address: '', faveGenre1: '', faveGenre2: '', firstQ: '', secondQ: '' };
@@ -39,14 +27,6 @@ angular.module('gameStoreApp')
             5: 'Vehicular combat'
         }
 
-        register.countries = {
-            0: 'USA',
-            1: 'Italy'
-        }
-
-        register.getCountries = function() {
-            //fill countries from xml
-        };
 
 
 

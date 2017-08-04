@@ -159,8 +159,6 @@ angular.module('gameStoreApp')
                 $rootScope.user = storedUser;
                 $rootScope.user.isConnected = true;
                 $log.debug('is session.get() -> took cookie');
-                if ($rootScope.user.role == "admin")
-                    $rootScope.user.isAdmin = true;
             }
 
             $log.info('in session.get()', $rootScope.user);
@@ -182,7 +180,7 @@ angular.module('gameStoreApp')
                 userName: 'Guest',
             };
 
-            $rootScope.isAdmin = false;
+            // TODO - amit to test - see if exception not thrown here if cookie not exists...
             $cookies.remove(_cookieKey);
 
         }
