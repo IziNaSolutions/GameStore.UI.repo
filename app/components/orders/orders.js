@@ -8,7 +8,7 @@
  * Controller of the gameStoreApp
  */
 angular.module('gameStoreApp')
-    .controller('OrdersCtrl', function(orders, session, $log, $location, $rootScope) {
+    .controller('OrdersCtrl', function(orders, session, $log, $location) {
 
         var ordersSelf = this;
 

@@ -56,10 +56,17 @@
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hello {{user.userName}}<span class="caret" ng-if="user.isConnected"></span></a>
                             <ul class="dropdown-menu" ng-if="user.isConnected">
-                                <!-- TODO - actions for user: view my profile.. etc -->
                                 <li><a href="#/orders">Orders History</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a ng-click="logout()">Logout</a></li>
+                                <li "user.role=='admin'" role="separator" class="divider"></li>
+                                <li><a ng-if="user.role=='admin'" a href="#/ordersManagement">Orders Managment</a></li>
+                                <li "user.role=='admin'" role="separator" class="divider"></li>
+                                <li><a ng-if="user.role=='admin'" a href="#/clientsManagement">Clients Managment</a></li>
+                                <li "user.role=='admin'" role="separator" class="divider"></li>
+
+                                <!-- Change to Products in the href-->
+                                <li><a ng-if="user.role=='admin'" a href="#/orders">Products Managment</a></li>
                             </ul>
                             <li>
                             </li>

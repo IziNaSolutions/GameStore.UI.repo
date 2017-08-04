@@ -27,7 +27,7 @@ angular.module('gameStoreApp')
                 $log.info("getPastOrders response:", res);
                 orderDetails.allOrders = res;
                 if (session.get().role === 'admin') {
-                    orderDetails = true;
+                    orderDetails.show = true;
                     getOrderGames();
                 } else {
                     for (var i = 0; i < orderDetails.allOrders.length; i++) {
