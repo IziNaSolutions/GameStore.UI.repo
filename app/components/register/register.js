@@ -17,6 +17,7 @@ angular.module('gameStoreApp')
 
 
         register.user = { userName: '', password: '', re_password: '', firstName: '', lastName: '', phone: '', country: '', address: '', faveGenre1: '', faveGenre2: '', firstQ: '', secondQ: '' };
+        register.game = { gameName: '', desc: '', picPath: '', publisher: '', price: '', stokeAmount: '', category: ''};
 
         register.genres = {
             0: 'Action',
@@ -50,7 +51,7 @@ angular.module('gameStoreApp')
             let _secAns = register.user.secondQ;
             validation = (Math.max(_secAns.length, maxLength) === maxLength) ? true : false
 
-            if (!_userName) { alert('please provide 3 to 8 letters username'); }
+            if (!_userName) { alert('please provide 3 to 8 letters username'); return; }
             if (_rePassord != _password) {
                 alert("Paswword doesn't match!\n Please insert match passwords!")
                 return;
@@ -90,6 +91,5 @@ angular.module('gameStoreApp')
                 return;
             registerService.registerNewUser(_userName, _password, _firstName, _lastName, _country, _address, _phone, _firstAns, _secAns, _categories);
         }
-
-
+        
     });

@@ -13,7 +13,8 @@
         <img class="details" ng-src="{{catalog.baseUrl + game.picPath}}" style="margin: -12px 10px 0 0; float:left ;width:50px;"
              ng-click="gameDetails(game)"/>             
         <h3>{{game.gameName}} , By: {{game.publisher}}</h3>        
-        <span class="price">{{game.category}}, {{game.price | currency}}</span>
+        <span class="price">{{game.category}}, {{game.price | currency}} </span>
+        <button ng-if="user.isConnected" ng-click="catalog.addToCart(game.gameName, 1, user.userName)">add 1 unit to cart</button>
       </li>
     </ul>
 </div>

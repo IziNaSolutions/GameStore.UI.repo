@@ -65,8 +65,8 @@ angular
                 controller: 'ClientsManagementCtrl',
                 controllerAs: 'clientsManagement'
             })
-            .when('/gamesManagement', {
-                templateUrl: 'components/gamesManagement/gamesmanagement.html',
+            .when('/gamesManagement', {                
+                templateUrl: 'components/gamesManagement/gamesManagement.html',
                 controller: 'GamesManagementCtrl',
                 controllerAs: 'gamesManagement'
             })
@@ -89,6 +89,11 @@ angular
                 templateUrl: 'components/register/register.html',
                 controller: 'RegisterCtrl',
                 controllerAs: 'registerCtrl'
+            })            
+            .when('/gameRegister', {
+                templateUrl: 'components/gamesManagement/gameRegister.html',
+                controller: 'GamesManagementCtrl',
+                controllerAs: 'gamesManagement'
             })
             .when('/order_details/:orderID', {
                 templateUrl: 'components/orderDetails/orderDetails.html',

@@ -56,17 +56,22 @@
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hello {{user.userName}}<span class="caret" ng-if="user.isConnected"></span></a>
                             <ul class="dropdown-menu" ng-if="user.isConnected">
-                                <li><a href="#/orders">Orders History</a></li>
+                                <li><a href="#/orders">My Orders History</a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a ng-click="logout()">Logout</a></li>
+                                
+                                <li "user.role=='admin'" role="separator" class="divider"></li>
+                                <li><a ng-if="user.role=='admin'" a href="#/inventory">Inventory</a></li>
+                                
                                 <li "user.role=='admin'" role="separator" class="divider"></li>
                                 <li><a ng-if="user.role=='admin'" a href="#/ordersManagement">Orders Managment</a></li>
-                                <li "user.role=='admin'" role="separator" class="divider"></li>
                                 <li><a ng-if="user.role=='admin'" a href="#/clientsManagement">Clients Managment</a></li>
+                                <li><a ng-if="user.role=='admin'" a href="#/gamesManagement">Products Managment</a></li>
                                 <li "user.role=='admin'" role="separator" class="divider"></li>
-
-                                <!-- Change to Products in the href-->
-                                <li><a ng-if="user.role=='admin'" a href="#/orders">Products Managment</a></li>
+                                <li "user.role=='admin'" role="separator" class="divider"></li>                             
+                                <li><a ng-click="logout()">Logout</a></li>
+                                
+                                
+                                
                             </ul>
                             <li>
                             </li>
@@ -110,10 +115,10 @@
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
     <script>
-        ! function(A, n, g, u, l, a, r) {
-            A.GoogleAnalyticsObject = l, A[l] = A[l] || function() {
-                    (A[l].q = A[l].q || []).push(arguments)
-                }, A[l].l = +new Date, a = n.createElement(g),
+        ! function (A, n, g, u, l, a, r) {
+            A.GoogleAnalyticsObject = l, A[l] = A[l] || function () {
+                (A[l].q = A[l].q || []).push(arguments)
+            }, A[l].l = +new Date, a = n.createElement(g),
                 r = n.getElementsByTagName(g)[0], a.src = u, r.parentNode.insertBefore(a, r)
         }(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
@@ -153,6 +158,7 @@
     <script src="components/about/about.js"></script>
     <script src="components/login/login.js"></script>
     <script src="components/clientsManagement/clientsManagement.js"></script>
+    <script src="components/gamesManagement/gamesManagement.js"></script>
     <script src="components/ordersManagement/ordersManagement.js"></script>
     <script src="components/inventory/inventory.js"></script>
     <script src="components/catalog/catalog.js"></script>

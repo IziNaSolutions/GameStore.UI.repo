@@ -1,0 +1,11 @@
+<h1>This is the games managment view.</h1>
+<div class="content">
+    <h3>add a new game to DB </h3>  
+    <input type="button" class="btn btn-lg btn-primary" value="add a new game" ng-click="gamesManagement.register()">
+    <h3>choose game to delete </h3>    
+    <select class="C" ng-model="deleted" ng-options="game.gameName for game in gamesManagement.games" required autofocus>
+    <option value=""></option>
+    </select>
+    <input type="submit" class="btn btn-danger" value="Submit" ng-click="gamesManagement.deleteGame(deleted.gameName)">    
+</div>
+<br>
