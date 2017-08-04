@@ -14,7 +14,7 @@ angular.module('gameStoreApp')
         registerService.getCountries().then(function(res) {
             register.countries = res;
         });
-
+        
 
         register.user = { userName: '', password: '', re_password: '', firstName: '', lastName: '', phone: '', country: '', address: '', faveGenre1: '', faveGenre2: '', firstQ: '', secondQ: '' };
         register.game = { gameName: '', desc: '', picPath: '', publisher: '', price: '', stokeAmount: '', category: ''};
@@ -27,10 +27,6 @@ angular.module('gameStoreApp')
             4: 'Strategy',
             5: 'Vehicular combat'
         }
-
-
-
-
 
         register.reg = function() {
             let maxLength = 50;

@@ -1,11 +1,36 @@
-<h1>This is the games managment view.</h1>
+<h1>Games managment</h1>
 <div class="content">
-    <h3>add a new game to DB </h3>  
+    <h3>Add a new game to DB </h3>  
     <input type="button" class="btn btn-lg btn-primary" value="add a new game" ng-click="gamesManagement.register()">
-    <h3>choose game to delete </h3>    
+    <h3>Choose game to delete </h3>    
     <select class="C" ng-model="deleted" ng-options="game.gameName for game in gamesManagement.games" required autofocus>
     <option value=""></option>
     </select>
     <input type="submit" class="btn btn-danger" value="Submit" ng-click="gamesManagement.deleteGame(deleted.gameName)">    
 </div>
 <br>
+<div>
+
+
+<h3>List of all games in the store </h3>
+<table>
+  <tr>
+      <td>#</td>
+      <td>Game name</td>  
+      <td>Description</td> 
+      <td>Publisher</td> 
+      <td>Price</td>              
+      <td>Category</td>  
+      <td>Amount in stoke</td>  
+  </tr>
+  <tr ng-repeat="game in gamesManagement.games">
+    <td>{{ $index + 1 }}</td>
+    <td>{{game.gameName}} </td> 
+    <td>{{game.description}}  </td>   
+    <td>{{game.publisher}}  </td>
+   <td>{{game.price | currency}}</td>
+   <td>{{game.category}}  </td>   
+   <td>{{game.stokeAmount}}  </td>
+  </tr>
+</table>
+</div>

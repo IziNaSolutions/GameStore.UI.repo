@@ -33,7 +33,7 @@
                                             <div ng-show="product.stock>=product.amountInCart" class="col-xs-12"><small>In stock:<span><font color="blue">{{product.stock}}</font></span></small></div>
                                         </div>
                                         <div class="col-sm-3 col-xs-3 text-right">
-                                            <h6><span>$</span>{{product.amountInCart * product.price}}</h6>
+                                            <h6><span>{{bill.units}}</span> {{product.amountInCart * product.price*bill.factor | number:0}}</h6>
                                         </div>
                                         <div class="form-group">
                                             <hr />
@@ -48,8 +48,8 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-xs-12">
-                                        <strong>Order Total</strong>
-                                        <div class="pull-right"><span>$</span><span>{{bill.total}}</span></div>
+                                        <strong>Order Total</strong>                                        
+                                        <div class="pull-right"><span>{{bill.units}}</span><span> {{bill.total*bill.factor | number:0}} </span></div>
                                     </div>
                                 </div>
                             </div>
@@ -89,15 +89,16 @@
                                 <div class="form-group ">
                                     <div class="col-md-12 "><strong>Prefered Currncy:</strong></div>
                                     <div class="col-md-12 ">
-                                        <select id="Currncy " name="Currncy " class="form-control" ng-model="bill.currency">
-                                        <option value="1 ">USD</option>
-                                        <option value="2 ">NIS</option>
+                                        <select id="Currncy " name="Currncy " class="form-control" ng-model="bill.currency" ng-selected="bill.setFactor(bill.currency)">
+                                        <option  value="USD">USD</option>
+                                        <option  value="NIS">NIS</option>
                                     </select>
                                     </div>
                                 </div>
                                 <div class="form-group ">
                                     <div class="col-md-12 "><strong>Credit Card Number:(16 digits)</strong></div>
-                                    <div class="col-md-12 "><input type="text" ng-model="bill.creditCard" class="form-control " name="car_number " value=" " /></div>
+                                    <div class="col-md-12 "><input type="text" ng-model="bill.creditCard" class="form-control " name="car_number "
+                                            value=" " /></div>
                                 </div>
                             </div>
 
