@@ -29,6 +29,8 @@ angular
             })
             .when('/about', {
                 templateUrl: 'components/about/about.html',
+                controller: 'AboutCtrl',
+                controllerAs: 'about'
             })
             .when('/404', {
                 templateUrl: '404.html',
@@ -67,7 +69,7 @@ angular
                 templateUrl: 'components/gamesManagement/gamesmanagement.html',
                 controller: 'GamesManagementCtrl',
                 controllerAs: 'gamesManagement'
-            })             
+            })
             .when('/inventory', {
                 templateUrl: 'components/inventory/inventory.html',
                 controller: 'InventoryCtrl',
@@ -80,7 +82,7 @@ angular
             })
             .when('/ordersManagement', {
                 templateUrl: 'components/ordersManagement/ordersManagement.html',
-                controller: 'OrdersManagementCtrl',
+                controller: 'ordersManagementCtrl',
                 controllerAs: 'ordersManagement'
             })
             .when('/register', {

@@ -10,7 +10,10 @@
 angular.module('gameStoreApp')
     .controller('BillCtrl', function(cart, $log, $location, session, orders) {
 
+
         var bill = this;
+
+        bill.currency = "USD";
         bill.baseUrl = cart.GetServiceBaseURL();
         bill.dateBad = false;
         bill.userName = session.get().userName;
@@ -18,6 +21,15 @@ angular.module('gameStoreApp')
         bill.orderComplete = false;
         bill.stock = true;
 
+
+        function check() {
+            if (session.get().userName == 'Guest') {
+                session.hideHeaders();
+                $location.path('/404');
+            }
+        }
+
+        check();
 
 
         bill.date = new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000).toLocaleDateString();
@@ -62,12 +74,15 @@ angular.module('gameStoreApp')
                 bill.total > 0 ? alert("Error: The credit cart is not according the pattern") : alert("Error: The cart is empty!")
             else if (bill.stock === false)
                 alert("In some games there are not enough in stock");
-            else {
+            else if (session.get().userName !== 'Guest') {
                 orders.confirmNewOrder(bill.userName, 'USD', bill.date).then(function(res) {
                     console.log(res.status);
                     getCartInfo();
                     bill.orderComplete = true;
                 })
+            } else {
+                session.hideHeaders();
+                $location.path('/404');
             }
         };
 
@@ -79,6 +94,8 @@ angular.module('gameStoreApp')
             $location.path('/orders');
         };
 
+
+        bill.calculate = function() {};
 
 
     });

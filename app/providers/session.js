@@ -18,6 +18,7 @@ angular.module('gameStoreApp')
 
         ///////////// Initiate ///////////
 
+
         if ($rootScope.user === undefined) {
             $rootScope.user = {
                 isConnected: false,
@@ -25,6 +26,11 @@ angular.module('gameStoreApp')
                 userName: 'Guest',
             };
         }
+
+        if ($location.path() === '/404')
+            $rootScope.showHeaders = false;
+        else
+            $rootScope.showHeaders = true;
 
         var _cookieKey = 'GameStoreUser';
 
@@ -179,6 +185,11 @@ angular.module('gameStoreApp')
 
         }
 
+        function hideHeaders() {
+            $rootScope.showHeaders = false;
+        }
+
+
 
         // API
         var API = {
@@ -186,6 +197,8 @@ angular.module('gameStoreApp')
             remember: remember,
             connect: connect,
             logout: logout,
+            hideHeaders: hideHeaders,
+
         };
 
         //////// root scope methods publish //////

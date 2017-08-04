@@ -5,19 +5,16 @@
     <!-- username field -->
     <div class="form-group">
         <label>Username</label>
-        <input type="text" name="userName" class="form-control" ng-model="registerCtrl.user.userName" ng-minlength="3" ng-maxlength="8"
-            ng-pattern="/^[a-zA-Z\s]*$/" ; required autofocus>
+        <input type="text" name="userName" class="form-control" ng-model="registerCtrl.user.userName" ng-minlength="3" ng-maxlength="8" ng-pattern="/^[a-zA-Z\s]*$/" ; required autofocus>
 
     </div>
 
     <!-- password field -->
     <div class="form-group">
         <label>Password </label>
-        <input type="password" name="password" class="form-control" ng-model="registerCtrl.user.password" ng-minlength="5" ng-maxlength="10"
-            ng-pattern='/^[a-zA-Z0-9]*$/' ; required autofocus>
+        <input type="password" name="password" class="form-control" ng-model="registerCtrl.user.password" ng-minlength="5" ng-maxlength="10" ng-pattern='/^[a-zA-Z0-9]*$/' ; required autofocus>
         <label>Re type password</label>
-        <input type="password" name="re_password" class="form-control" ng-model="registerCtrl.user.re_password" ng-minlength="5"
-            ng-maxlength="10" ng-pattern='/^[a-zA-Z0-9]*$/' ; required autofocus>
+        <input type="password" name="re_password" class="form-control" ng-model="registerCtrl.user.re_password" ng-minlength="5" ng-maxlength="10" ng-pattern='/^[a-zA-Z0-9]*$/' ; required autofocus>
 
     </div>
 
@@ -40,8 +37,7 @@
     <!-- country -->
     <div class="form-group">
         <label>Choose country:</label>
-        <select ng-model="registerCtrl.user.country" ng-options='country as country for country in registerCtrl.countries' name="country"
-            required autofocus></select>
+        <select class="C" ng-model=" register.user.country" ng-options="country for country in register.countries" ng-required="true" />
 
     </div>
 

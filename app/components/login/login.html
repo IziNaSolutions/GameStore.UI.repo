@@ -1,14 +1,11 @@
-{{$rootScope.user.lastTime}}
 <div class="container">
 
     <span ng-class="login.message.class">
-        {{login.message.text}}
-    </span>    
+    </span>
     <form class="form-signin" ng-submit="login.submit()">
         <h2 class="form-signin-heading">Log In To Server</h2>
         <label for="inputUserName" class="sr-only">User Name</label>
-        <input ng-model="login.inputUserName" type="text" id="inputUserName" class="form-control" placeholder="User Name" required
-            autofocus>
+        <input ng-model="login.inputUserName" type="text" id="inputUserName" class="form-control" placeholder="User Name" required autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
         <input ng-model="login.inputPassword" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
         <div class="checkbox">
@@ -20,11 +17,11 @@
 
         <div>
             <label> password recovery </label>
-            <input ng-model="login.recoverUserName" type="text" id="inputUserName" class="form-control" placeholder="recover user name" >
-            <input ng-model="login.ans1" type="text" id="ans1" class="form-control" placeholder="answer to question 1" >
-            <input ng-model="login.ans2" type="text" id="ans2" class="form-control" placeholder="answer to question 2" >
+            <input ng-model="login.recoverUserName" type="text" id="inputUserName" class="form-control" placeholder="recover user name">
+            <input ng-model="login.ans1" type="text" id="ans1" class="form-control" placeholder="answer to question 1">
+            <input ng-model="login.ans2" type="text" id="ans2" class="form-control" placeholder="answer to question 2">
             <label ng-show="login.recPass"> recovered password: </label>
-            <input ng-model="login.recPass" type="text" id="recpass" class="form-control" placeholder="" ng-show="login.recPass">            
+            <input ng-model="login.recPass" type="text" id="recpass" class="form-control" placeholder="" ng-show="login.recPass">
             <input type="submit" class="btn btn-danger" value="recover password" ng-click="login.recoverPass()">
         </div>
 
