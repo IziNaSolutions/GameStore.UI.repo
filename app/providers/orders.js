@@ -62,12 +62,23 @@ angular.module('gameStoreApp')
             return commonHttp.httpCall(
                 'GET',
                 '/orders',
-                '/ getOrdersGames',
+                '/getOrdersGames',
                 null, [{
                     name: 'orderID',
                     value: orderID
                 }]
 
+            ).then(function(response) {
+                return response.data;
+            });
+        }
+
+        function getAllOrders() {
+            return commonHttp.httpCall(
+                'GET',
+                '/orders',
+                '/getAllOrders',
+                null, null
             ).then(function(response) {
                 return response.data;
             });
@@ -80,6 +91,7 @@ angular.module('gameStoreApp')
             getPastOrders: getPastOrders,
             getOrderGames: getOrderGames,
             GetServiceBaseURL: GetServiceBaseURL,
+            getAllOrders: getAllOrders,
         };
 
         return API;

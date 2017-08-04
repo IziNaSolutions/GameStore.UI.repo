@@ -18,7 +18,6 @@
                         <th style="width:15%">Order id</th>
                         <th style="width:20%">Order date</th>
                         <th style="width:20%">Shipment date</th>
-                        <th style="width:15%">Currency</th>
                         <th style="width:20%" class="text-center">Total Amount</th>
                         <th style="width:10%"></th>
                     </tr>
@@ -39,9 +38,7 @@
 
                         <td data-th="Price">{{order.shipmentDate}}</td>
 
-                        <td data-th="Subtotal" class="text-center">{{order.currency}}</td>
-
-                        <td data-th="Subtotal" class="text-center">{{order.totalAmount}}</td>
+                        <td data-th="Subtotal" class="text-center">{{order.totalAmount}} {{order.currency}}</td>
                     </tr>
                     <tr ng-show="orders.empty">
                         <td>

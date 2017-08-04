@@ -69,7 +69,7 @@ angular.module('gameStoreApp')
                         $rootScope.user.isConnected = true;
                         $rootScope.user.userName = result.userName;
                         $rootScope.user.role = result.type;
-                        $rootScope.user.lastTime = new Date((new Date(result.lastTime)).getTime() + 7 * 24 * 60 * 60 * 1000).toLocaleDateString();
+                        $rootScope.user.lastTime = new Date((new Date(result.lastTime)).getTime()).toLocaleDateString();
                         alert('last connection was: ' + $rootScope.user.lastTime);
 
                         // Example:

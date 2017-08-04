@@ -185,6 +185,11 @@ angular.module('gameStoreApp')
 
         }
 
+        function hideHeaders() {
+            $rootScope.showHeaders = false;
+        }
+
+
 
         // API
         var API = {
@@ -192,6 +197,8 @@ angular.module('gameStoreApp')
             remember: remember,
             connect: connect,
             logout: logout,
+            hideHeaders: hideHeaders,
+
         };
 
         //////// root scope methods publish //////
