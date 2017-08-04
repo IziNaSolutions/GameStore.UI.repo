@@ -1,3 +1,17 @@
+table, th , td  {
+  border: 1px solid grey;  
+  border-collapse: collapse;
+  padding: 5px;
+  margin: 5px;
+  border-spacing: 10px;  
+}
+table tr:nth-child(odd) {
+  background-color: #f1f1f1;
+}
+table tr:nth-child(even) {
+  background-color: #ffffff;
+}
+
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 // bower:scss
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
@@ -89,3 +103,4 @@ body {
     border-bottom: 0;
   }
 }
+

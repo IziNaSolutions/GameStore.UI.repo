@@ -38,7 +38,7 @@ angular.module('gameStoreApp')
       if (!gameName)
         alert('you must choose a game');
       products.deleteGame(gameName)
-        .then(function (res) {
+        .then(function (res) {          
           $log.info("deleteGame response:", res);
           products.getAllProduct()
             .then(function (res) {
@@ -51,9 +51,9 @@ angular.module('gameStoreApp')
     gamesManagement.register = function() {
       $location.path('/gameRegister');
     }
-    
+
     gamesManagement.addGame = function (){
-      gamesManagement.regGame();
+      gamesManagement.regGame();      
     }
 
     gamesManagement.regGame = function() {

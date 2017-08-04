@@ -30,8 +30,10 @@ angular.module('gameStoreApp')
                     categories: categories
                 }, null
             ).then(function (response) {
-                alert('Registration completed!\n Now you can log in')
-                $location.path('/login')
+                alert(response.data);
+                if (!user.isConnected) {
+                    $location.path('/login');
+                }
                 return response.data;
             });
         }
@@ -41,7 +43,7 @@ angular.module('gameStoreApp')
                 'GET',
                 '/xml',
                 '/countries.xml',
-                {'Access-Control-Allow-Origin': '*'}, null
+                null, null
             ).then(function (response) {
                 var x2js = new X2JS();
                 let conv = x2js.xml_str2json(response.data);

@@ -14,12 +14,15 @@ angular.module('gameStoreApp')
         var bill = this;
 
         bill.currency = "USD";
+        bill.factor = 1;
+        bill.units = '$';
         bill.baseUrl = cart.GetServiceBaseURL();
         bill.dateBad = false;
         bill.userName = session.get().userName;
         bill.creditCard;
         bill.orderComplete = false;
         bill.stock = true;
+
 
 
         function check() {
@@ -30,8 +33,7 @@ angular.module('gameStoreApp')
         }
 
         check();
-
-
+        
         bill.date = new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000).toLocaleDateString();
         getCartInfo();
 
@@ -61,13 +63,28 @@ angular.module('gameStoreApp')
                             if (bill.cartProducts[i].amountInCart > bill.cartProducts[i].stock)
                                 bill.stock = false;
                         }
-                        bill.show = true;
+                        if(bill.currency === 'NIS')
+                        {
+                            bill.factor=3.8;
+                            bill.units = 'NIS';
+                        }
+                        bill.show = true;                        
                     } else {
                         bill.empty = true;
                     }
                 });
         };
-
+        bill.setFactor = function(currency){
+            if(currency === 'NIS')
+                        {
+                            bill.factor=3.8;
+                            bill.units = 'NIS';
+                        }
+            else {
+                bill.factor=1;
+                bill.units = '$';
+            }
+        }
         bill.payment = function() {
             var regex = new RegExp("^[0-9]{16}$");
             if (!regex.test(bill.creditCard) && bill.total > 0)
@@ -75,7 +92,7 @@ angular.module('gameStoreApp')
             else if (bill.stock === false)
                 alert("In some games there are not enough in stock");
             else if (session.get().userName !== 'Guest') {
-                orders.confirmNewOrder(bill.userName, 'USD', bill.date).then(function(res) {
+                orders.confirmNewOrder(bill.userName, bill.currency, bill.date).then(function(res) {
                     console.log(res.status);
                     getCartInfo();
                     bill.orderComplete = true;

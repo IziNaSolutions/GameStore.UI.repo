@@ -24,7 +24,7 @@ angular.module('gameStoreApp')
       });
 
     inventory.getStyle = function (amount) {
-      if (amount < 10) {
+      if (amount < 4) {
         console.log(amount);
         return { 'color': 'red' };
       }

@@ -128,7 +128,7 @@ angular.module('gameStoreApp')
         },
         null
       ).then(function (response) {
-        alert('the game '+ gameName + ' was added completed!\n Yei!')
+        alert(response.data);        
         return response.data;
       });
     }
@@ -157,6 +157,7 @@ angular.module('gameStoreApp')
         },
         null
       ).then(function (response) {
+        alert(response.data); 
         return response.data;
       });
     }
