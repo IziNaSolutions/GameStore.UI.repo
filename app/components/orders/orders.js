@@ -29,9 +29,7 @@ angular.module('gameStoreApp')
                 }
             });
 
-        ordersSelf.backToCtalog = function () {
-            $location.path('/catalog');
-        };
+        
 
 
         // ordersSelf.clickToOpen = function(orderId) {
