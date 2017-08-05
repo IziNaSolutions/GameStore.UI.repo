@@ -34,10 +34,10 @@ angular.module('gameStoreApp')
                 if (!session.get().isConnected) {
                     $location.path('/login');
                 }
-                else $location.path('/clientsManagement');
+                else {$location.path('/clientsManagement');}
                 return response.data;
             });
-        }
+        };
 
         function getCountries() {
             return commonHttp.httpCall(
@@ -47,10 +47,10 @@ angular.module('gameStoreApp')
                 null, null
             ).then(function (response) {
                 var x2js = new X2JS();
-                let conv = x2js.xml_str2json(response.data);
-                let countries = conv['Countries']['Country'];
-                let display2 = Array();
-                for (let i = 0; i < countries.length; i++) {
+                var conv = x2js.xml_str2json(response.data);
+                var countries = conv['Countries']['Country'];
+                var display2 = Array();
+                for (var i = 0; i < countries.length; i++) {
                     display2[i] = countries[i].Name;
                 }
                 countries = display2;

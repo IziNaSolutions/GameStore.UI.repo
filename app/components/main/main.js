@@ -12,7 +12,7 @@ angular.module('gameStoreApp')
 
         //////////// init main /////////////
 
-        var main = this;
+        //var main = this;
         $rootScope.showHeaders = true;
 
         $rootScope.user = session.get();

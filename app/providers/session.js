@@ -28,9 +28,9 @@ angular.module('gameStoreApp')
         }
 
         if ($location.path() === '/404')
-            $rootScope.showHeaders = false;
+            {$rootScope.showHeaders = false;}
         else
-            $rootScope.showHeaders = true;
+            {$rootScope.showHeaders = true;}
 
         var _cookieKey = 'GameStoreUser';
 
@@ -75,6 +75,9 @@ angular.module('gameStoreApp')
 
         $rootScope.$on('$routeChangeSuccess', function(e, curr, prev) {
             $rootScope.menuActive = $location.path();
+            console.log(e);
+            console.log(curr);
+            console.log(prev);
 
             // $log.debug("user:", $rootScope.user);
             // $log.debug('e:', e);

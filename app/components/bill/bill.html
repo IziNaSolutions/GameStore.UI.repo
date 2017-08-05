@@ -33,7 +33,8 @@
                                             <div ng-show="product.stock>=product.amountInCart" class="col-xs-12"><small>In stock:<span><font color="blue">{{product.stock}}</font></span></small></div>
                                         </div>
                                         <div class="col-sm-3 col-xs-3 text-right">
-                                            <h6><span>{{bill.units}}</span> {{product.amountInCart * product.price*bill.factor | number:0}}</h6>
+                                            <h6><span>{{bill.units}}</span> {{product.amountInCart * product.price*bill.factor
+                                                | number:0}}</h6>
                                         </div>
                                         <div class="form-group">
                                             <hr />
@@ -97,21 +98,23 @@
                                 </div>
                                 <div class="form-group ">
                                     <div class="col-md-12 "><strong>Credit Card Number:(16 digits)</strong></div>
-                                    <div class="col-md-12 "><input type="text" ng-model="bill.creditCard" class="form-control " name="car_number " value=" " /></div>
+                                    <div class="col-md-12 "><input type="text" ng-model="bill.creditCard" class="form-control " name="car_number "
+                                            value=" " /></div>
                                 </div>
                             </div>
 
                             <div class="form-group ">
                                 <div class="col-md-6 col-sm-6 col-xs-12 ">
-                                    <td ng-show="cartSelf.show"> <a ng-click="bill.payment()" class="btn btn-success btn-block">Place order <i class="fa fa-angle-right"></i></a>
+                                    <td ng-show="cartSelf.show"> <a ng-click="bill.payment()" class="btn btn-success btn-block">Place order <i class="fa fa-angle-right"></i></a></td>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!--CREDIT CART PAYMENT END-->
+                </form>
             </div>
 
-            </form>
+
         </div>
         <div class="row cart-footer ">
 

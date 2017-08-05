@@ -233,7 +233,7 @@ module.exports = function(grunt) {
                 cssDir: '.tmp/styles',
                 generatedImagesDir: '.tmp/images/generated',
                 imagesDir: '<%= yeoman.app %>/images',
-                javascriptsDir: '<%= yeoman.app %>/scripts',
+                javascriptsDir: '<%= yeoman.app %>/{app.js, providers/*.js, components/{,*/}/*js}',
                 fontsDir: '<%= yeoman.app %>/styles/fonts',
                 importPath: './bower_components',
                 httpImagesPath: '/images',
@@ -259,7 +259,7 @@ module.exports = function(grunt) {
         filerev: {
             dist: {
                 src: [
-                    '<%= yeoman.dist %>/{app.js, components/**/*.js}',
+                    '<%= yeoman.dist %>/{app.js, components/{*,*/}*.js, providers/*.js}',
                     '<%= yeoman.dist %>/styles/{,*/}*.css',
                     '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
                     '<%= yeoman.dist %>/styles/fonts/*'
@@ -288,9 +288,9 @@ module.exports = function(grunt) {
 
         // Performs rewrites based on filerev and the useminPrepare configuration
         usemin: {
-            html: ['<%= yeoman.dist %>/{,*/,**/}*.html'],
+            html: ['<%= yeoman.dist %>/{index.html, 404.html, components/{,*/}*.html}'],
             css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
-            js: ['<%= yeoman.dist %>/{app.js, components/**/*.js}'],
+            js: ['<%= yeoman.dist %>/{app.js, components/{,*/}*.js, providers/*.js}'],
             options: {
                 assetsDirs: [
                     '<%= yeoman.dist %>',
@@ -364,7 +364,7 @@ module.exports = function(grunt) {
                 files: [{
                     expand: true,
                     cwd: '<%= yeoman.dist %>',
-                    src: ['*.html'],
+                    src: ['{index.html, 404.html, components/{,*/}*.html}'],
                     dest: '<%= yeoman.dist %>'
                 }]
             }
@@ -375,10 +375,10 @@ module.exports = function(grunt) {
                 options: {
                     module: 'gameStoreApp',
                     htmlmin: '<%= htmlmin.dist.options %>',
-                    usemin: 'scripts/scripts.js'
+                    usemin: '{app.js, components/{,*/}*.js, providers/*.js}'
                 },
                 cwd: '<%= yeoman.app %>',
-                src: 'components/**/*.html',
+                src: 'components/{,*/}*.html',
                 dest: '.tmp/templateCache.js'
             }
         },

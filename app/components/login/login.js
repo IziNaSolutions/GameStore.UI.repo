@@ -34,17 +34,20 @@ angular.module('gameStoreApp')
                 if (!res) {
                     login.recPass = false;
                     if (!login.recoverUserName) {
-                        alert('please fill user name in order to recover password')
+                        window.alert('please fill user name in order to recover password');
                     }
                     if (!login.ans1) {
-                        alert('please fill firt answer in order to recover password')
+                        window.alert('please fill firt answer in order to recover password');
                     }
                     if (!login.ans2) {
-                        alert('please fill second answer in order to recover password')
-                    } else(alert('cannot recover password please re check you entries'))
+                        window.alert('please fill second answer in order to recover password');
+                    } else{
+                        window.alert('cannot recover password please re check you entries');
+                        return;
+                    }
                 } else { login.recPass = res["0"].password; }
             });
-        }
+        };
 
         login.submit = function() {
 
@@ -70,7 +73,7 @@ angular.module('gameStoreApp')
                         $rootScope.user.userName = result.userName;
                         $rootScope.user.role = result.type;
                         $rootScope.user.lastTime = new Date((new Date(result.lastTime)).getTime()).toLocaleDateString();
-                        alert('last connection was: ' + $rootScope.user.lastTime);
+                        window.alert('last connection was: ' + $rootScope.user.lastTime);
 
                         // Example:
                         login.message.text = result.formattedString;
@@ -90,7 +93,7 @@ angular.module('gameStoreApp')
                     } else {
                         login.message.text = result;
                         login.message.class = 'label label-warning';
-                        alert('incorrect cardinality');
+                        window.alert('incorrect cardinality');
                     } // if result.success
 
                 }); // auth.login

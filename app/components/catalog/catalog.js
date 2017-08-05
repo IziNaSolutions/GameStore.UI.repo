@@ -8,7 +8,7 @@
  * Controller of the gameStoreApp
  */
 angular.module('gameStoreApp')
-  .controller('CatalogCtrl', function (commonHttp, session, $rootScope, products, $log, cart, ngDialog) {
+  .controller('CatalogCtrl', function (commonHttp, session, $rootScope, products, $log, cart) {
     
     var catalog = this;
     catalog.baseUrl = commonHttp.GetServiceBaseURL();
@@ -51,9 +51,10 @@ angular.module('gameStoreApp')
 
     catalog.addToCart = function (game, amout, user) {
       cart.addToCart(game, amout, user).then(function (res) {
-        alert('one unit of game ' + game + ' was added to cart\n If you want to edit to amount in cart please enter your cart');
+        window.alert('one unit of game ' + game + ' was added to cart\n If you want to edit to amount in cart please enter your cart');
+        console.log(res);
       });
-    }
+    };
 
   });
 

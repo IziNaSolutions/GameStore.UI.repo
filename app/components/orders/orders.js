@@ -8,7 +8,7 @@
  * Controller of the gameStoreApp
  */
 angular.module('gameStoreApp')
-    .controller('OrdersCtrl', function (orders, session, $log, $location) {
+    .controller('OrdersCtrl', function (orders, session,$log) {
 
         var ordersSelf = this;
 
@@ -21,7 +21,7 @@ angular.module('gameStoreApp')
                 $log.info("getPastOrders response:", res);
                 ordersSelf.allOrders = res;
                 if (ordersSelf.allOrders.length > 0)
-                    ordersSelf.empty = false;
+                    {ordersSelf.empty = false;}
 
                 for (var i = 0; i < ordersSelf.allOrders.length; i++) {
                     ordersSelf.allOrders[i].orderDate = new Date(ordersSelf.allOrders[i].orderDate).toLocaleDateString();
