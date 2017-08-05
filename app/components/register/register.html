@@ -5,39 +5,41 @@
     <!-- username field -->
     <div class="form-group">
         <label>Username</label>
-        <input type="text" name="userName" class="form-control" ng-model="registerCtrl.user.userName" ng-minlength="3" ng-maxlength="8" ng-pattern="/^[a-zA-Z\s]*$/" ; required autofocus>
+        <input type="text" name="userName" class="form-control" ng-model="registerCtrl.user.userName" placeholder="user name" ng-minlength="3" ng-maxlength="8" ng-pattern="/^[a-zA-Z\s]*$/" ; required autofocus>
 
     </div>
 
     <!-- password field -->
     <div class="form-group">
         <label>Password </label>
-        <input type="password" name="password" class="form-control" ng-model="registerCtrl.user.password" ng-minlength="5" ng-maxlength="10" ng-pattern='/^[a-zA-Z0-9]*$/' ; required autofocus>
+        <input type="password" name="password" class="form-control" placeholder="password" ng-model="registerCtrl.user.password" ng-minlength="5" ng-maxlength="10" ng-pattern='/^[a-zA-Z0-9]*$/' ; required autofocus>
         <label>Re type password</label>
-        <input type="password" name="re_password" class="form-control" ng-model="registerCtrl.user.re_password" ng-minlength="5" ng-maxlength="10" ng-pattern='/^[a-zA-Z0-9]*$/' ; required autofocus>
+        <input type="password" name="re_password" class="form-control" placeholder="repeated password" ng-model="registerCtrl.user.re_password" ng-minlength="5" ng-maxlength="10" ng-pattern='/^[a-zA-Z0-9]*$/' ; required autofocus>
 
     </div>
 
     <!-- Security field -->
     <div class="form-group">
-        <label>Security Q1 - What is you fav animal</label>
-        <input type="text" name="q1" class="form-control" ng-model="registerCtrl.user.firstQ" ; required autofocus>
-        <label>Security Q2 - What is you fav city</label>
-        <input type="text" name="q2" class="form-control" ng-model="registerCtrl.user.secondQ" ; required autofocus>
+        <label>Security Q1 - What is you favorite animal</label>
+        <input type="text" name="q1" placeholder="anser to the first question" class="form-control" ng-model="registerCtrl.user.firstQ" ; required autofocus>
+        <label>Security Q2 - What is you favorite city</label>
+        <input type="text" name="q2" placeholder="anser to the second question" class="form-control" ng-model="registerCtrl.user.secondQ" ; required autofocus>
     </div>
 
     <!-- Genre -->
-    <select class="C" ng-model="registerCtrl.user.faveGenre1" ng-options="genre as genre for genre in registerCtrl.genres" required autofocus>
+    <label>Choose categories:</label>
+    <select class="form-control" ng-model="registerCtrl.user.faveGenre1" ng-options="genre as genre for genre in registerCtrl.genres" required autofocus>
     <option value="">Favorite genre of PC-Games 1</option>
     </select>
-    <select class="C" ng-model="registerCtrl.user.faveGenre2" ng-options="genre as genre for genre in registerCtrl.genres" required autofocus>
+    <br>
+    <select class="form-control" ng-model="registerCtrl.user.faveGenre2" ng-options="genre as genre for genre in registerCtrl.genres" required autofocus>
     <option value="">Favorite genre of PC-Games 2</option>
     </select>
-
+    <br><br>
     <!-- country -->
     <div class="form-group">
         <label>Choose country:</label>
-        <select class="C" ng-model=" registerCtrl.user.country" ng-options="country for country in registerCtrl.countries" ng-required="true">
+        <select class="form-control" ng-model=" registerCtrl.user.country" ng-options="country for country in registerCtrl.countries" ng-required="true">
         <option value="">Choose your country</option>
         </select>
         
@@ -48,13 +50,13 @@
     <h2>Additional Fields For Regestration</h2>
     <div class="form-group">
         <label>First Name</label>
-        <input type="text" name="firstName" class="form-control" ng-model="registerCtrl.user.firstName" ; required autofocus>
+        <input type="text" placeholder="first name" name="firstName" class="form-control" ng-model="registerCtrl.user.firstName" ; required autofocus>
         <label>Last Name</label>
-        <input type="text" name="lastName" class="form-control" ng-model="registerCtrl.user.lastName" ; required autofocus>
+        <input type="text" placeholder="last name" name="lastName" class="form-control" ng-model="registerCtrl.user.lastName" ; required autofocus>
         <label>Address</label>
-        <input type="text" name="Address" class="form-control" ng-model="registerCtrl.user.address" ; required autofocus>
+        <input type="text" placeholder="address" name="Address" class="form-control" ng-model="registerCtrl.user.address" ; required autofocus>
         <label>Phone</label>
-        <input type="text" name="Phone" class="form-control" ng-model="registerCtrl.user.phone" ; required autofocus>
+        <input type="text" placeholder="phone" name="Phone" class="form-control" ng-model="registerCtrl.user.phone" ; required autofocus>
                 
     </div>
 

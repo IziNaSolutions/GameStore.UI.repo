@@ -15,11 +15,12 @@
             <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
         </div>
 
-        <div>
+        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#recover">Recover password</button>
+        <div id="recover" class="collapse">
             <label> password recovery </label>
             <input ng-model="login.recoverUserName" type="text" id="inputUserName" class="form-control" placeholder="recover user name">
-            <input ng-model="login.ans1" type="text" id="ans1" class="form-control" placeholder="answer to question 1">
-            <input ng-model="login.ans2" type="text" id="ans2" class="form-control" placeholder="answer to question 2">
+            <input ng-model="login.ans1" type="text" id="ans1" class="form-control" placeholder="answer to what is your favourite animal">
+            <input ng-model="login.ans2" type="text" id="ans2" class="form-control" placeholder="answer to what is your favourite city">
             <label ng-show="login.recPass"> recovered password: </label>
             <input ng-model="login.recPass" type="text" id="recpass" class="form-control" placeholder="" ng-show="login.recPass">
             <input type="submit" class="btn btn-danger" value="recover password" ng-click="login.recoverPass()">

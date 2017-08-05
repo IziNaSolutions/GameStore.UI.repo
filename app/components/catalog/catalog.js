@@ -14,21 +14,15 @@ angular.module('gameStoreApp')
     catalog.baseUrl = commonHttp.GetServiceBaseURL();
 
     catalog.user = session.get().userName;
-
+    catalog.detailedGame = "";
     
     catalog.showProduct = function (gameName) {
       products.getGame(gameName)
       .then(function (res) {
        $log.info("getGame response:", res);
-        catalog.detailedGame = res;
+        catalog.detailedGame = res["0"];                
       }
       );      
-      ngDialog.open({                     
-        template: '#/inventory'
-
-      });
-
-
     };
 
     products.getAllProduct()

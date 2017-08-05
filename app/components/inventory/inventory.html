@@ -1,26 +1,30 @@
 <script type="text/ng-template" id="firstDialogId">
-        Wow a thing
-    </script>
-<h2>Inventory - amount in stock for every game</h2>
+    Wow a thing
+</script>
+<h2 class="display-2">Inventory - amount in stock for every game</h2>
 <div class="content">
-    <p>amount to add in addition to exist amount </p>
-    <input type="number" ng-model="newAmount" placeholder="new amount" min=1 max=99>
-    <select class="C" ng-model="newAmountGame" ng-options="game.gameName as game.gameName for game in inventory.games" required autofocus>
-    <option value=""></option>
+    <label>amount to add in addition to exist amount: </label>
+    <input type="number" ng-model="newAmount" min=1 max=99>
+    <br>
+    <label> choose a game </label>
+    <select class="form-control" ng-model="newAmountGame" ng-options="game.gameName as game.gameName for game in inventory.games"
+        required autofocus>
+    <option value="none">please select a game</option>
     </select>
-    <input type="submit" class="btn btn-danger" value="Submit" ng-click="inventory.updateAmount(newAmountGame,newAmount)">
+    <br>
+    <input type="submit" class="btn btn-success" value="Submit" ng-click="inventory.updateAmount(newAmountGame,newAmount)">
 
 </div>
 
 <div class="content">
-    <ul id="game-list">
-      <li ng-repeat="game in inventory.games">  
-          <br>                             
-        <img class="details" ng-src="{{inventory.baseUrl + game.picPath}}" style="margin: -12px 10px 0 0; float:left ;width:50px;"
-             ng-click="gameDetails(game)"/>   
-           <br> 
-           <br>          
-        <label ng-style= "inventory.getStyle(game.stokeAmount)"> {{game.gameName}} , amount in stock: {{game.stokeAmount}} </label>                
-      </li>
+    <ul id="game-list" class="inline">
+        <li ng-repeat="game in inventory.games">
+            <br>
+            <img class="details" ng-src="{{inventory.baseUrl + game.picPath}}" style="margin: -12px 10px 0 0; float:left ;width:50px;"
+                ng-click="gameDetails(game)" />
+            <br>
+            <br>
+            <label ng-style="inventory.getStyle(game.stokeAmount)"> {{game.gameName}} , amount in stock: {{game.stokeAmount}} </label>
+        </li>
     </ul>
 </div>

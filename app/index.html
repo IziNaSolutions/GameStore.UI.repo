@@ -48,6 +48,7 @@
                         <li ng-repeat="item in menu" ng-class="{active: item.route == '#' + menuActive}" ng-if="item.roles.includes(user.role)">
                             <a href="{{::item.route}}">{{item.label}}</a>
                         </li>
+                        
                     </ul>
                     <!-- Hello Dropdown -->
 

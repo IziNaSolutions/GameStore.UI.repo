@@ -65,10 +65,10 @@ angular.module('gameStoreApp')
       return commonHttp.httpCall(
         'GET',
         '/games',
-        '/getItemByID', {
-          gameName : gameName,
-        },
-        null
+        '/getItemByID', null, [{
+                    name: 'gameName',
+                    value: gameName
+                }]        
       ).then(function (response) {
         return response.data;
       });

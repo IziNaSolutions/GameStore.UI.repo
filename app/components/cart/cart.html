@@ -1,7 +1,9 @@
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <div style="display: table; margin: auto;">
     <span class="step step_complete"> <a href="#/orders"  class="check-bc">Orders History</a> <span class="step_line step_complete"> </span>    <span class="step_line backline"> </span> </span>
 
 </div>
+
 <div class="container">
     <h1>Your Cart:</h1>
     <div>
@@ -24,7 +26,7 @@
                     <tr ng-show="cartSelf.show" ng-repeat="product in cartSelf.cartProducts">
                         <td data-th="Product">
                             <div class="row">
-                                <div class="col-sm-5"><img ng-src="{{cartSelf.baseUrl + product.image}}" alt="..." class="img-responsive" /></div>
+                                <div class="col-sm-5"><img ng-src="{{cartSelf.baseUrl + product.image}}" alt="..." class="img-responsive"  ng-click="cartSelf.showProduct(product.gameName)" onclick="document.getElementById('id02').style.display='block';"/></div>
                                 <div class="col-sm-7">
                                     <h4 class="nomargin">{{product.gameName}}</h4>
                                     <div class="col-sm-7">
@@ -75,3 +77,23 @@
 
     <!--container end-->
 </div>
+
+   <!--MODAL--> 
+  <div id="id02" class="w3-modal">
+    <div class="w3-modal-content" style="padding: 40px">
+      <div class="w3-container">
+        
+        <span onclick="document.getElementById('id02').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+        <img class="details" ng-src="{{cartSelf.baseUrl + cartSelf.detailedGame.picPath}} ">
+        <br><br><br><br>
+        <h2>Game Name: {{cartSelf.detailedGame.gameName}}</h2>
+        <br>
+        <h4>Description: {{cartSelf.detailedGame.description}}</h4>
+        <h4>Publisher: {{cartSelf.detailedGame.publisher}}</h4>
+        <h4>Price: {{cartSelf.detailedGame.price}}$</h4>
+        <h4>Category: {{cartSelf.detailedGame.category}}</h4>        
+        
+        
+      </div>
+    </div>
+  </div>
