@@ -8,13 +8,13 @@
  * Controller of the gameStoreApp
  */
 angular.module('gameStoreApp')
-  .controller('InventoryCtrl', function (session,commonHttp, products, $log, $location) {
-    
+  .controller('InventoryCtrl', function (session, commonHttp, products, $log, $location) {
+
     var inventory = this;
     inventory.baseUrl = commonHttp.GetServiceBaseURL();
 
     function check() {
-      if (session.get().userName == 'Guest') {
+      if (session.get().userName === 'Guest') {
         session.hideHeaders();
         $location.path('/404');
       }
@@ -32,13 +32,17 @@ angular.module('gameStoreApp')
         console.log(amount);
         return { 'color': 'red' };
       }
-    }
+    };
 
     inventory.updateAmount = function (gameName, StokeAmount) {
-      if(!gameName)
-      alert('you must choose a game');      
-      if(!StokeAmount || StokeAmount<0 || StokeAmount>100)
-      alert('please choose amount bigger then zero and less then 100');
+      if (!gameName) {
+        window.alert('you must choose a game');
+        return;
+      }
+      if (!StokeAmount || StokeAmount < 0 || StokeAmount > 100) {
+        window.alert('please choose amount bigger then zero and less then 100');
+        return;
+      }
       products.updateAmount(gameName, StokeAmount)
         .then(function (res) {
           $log.info("updateAmount response:", res);
@@ -49,6 +53,6 @@ angular.module('gameStoreApp')
             });
           //inventory.games = res;                               
         });
-    }
+    };
 
   });

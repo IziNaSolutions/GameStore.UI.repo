@@ -4,7 +4,7 @@
 <h2 class="display-2">Inventory - amount in stock for every game</h2>
 <div class="content">
     <label>amount to add in addition to exist amount: </label>
-    <input type="number" ng-model="newAmount" min=1 max=99>
+    <input type="number" ng-model="newAmount" min="1" max="99">
     <br>
     <label> choose a game </label>
     <select class="form-control" ng-model="newAmountGame" ng-options="game.gameName as game.gameName for game in inventory.games"

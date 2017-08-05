@@ -30,66 +30,66 @@ angular.module('gameStoreApp')
             3: 'SPORT',
             4: 'Strategy',
             5: 'Vehicular combat'
-        }
+        };
 
         register.reg = function () {
-            let maxLength = 50;
-            let _userName = register.user.userName;
-            let _password = register.user.password;
-            let _rePassord = register.user.re_password;
-            let _firstName = register.user.firstName;
-            let validation = (Math.max(_firstName.length, maxLength) === maxLength) ? true : false
-            let _lastName = register.user.lastName;
-            validation = (Math.max(_lastName.length, maxLength) === maxLength) ? true : false
-            let _phone = register.user.phone;
-            validation = (Math.max(_phone.length, maxLength) === maxLength) ? true : false
-            let _country = register.user.country;
-            let _address = register.user.address;
-            validation = (Math.max(_address.length, maxLength) === maxLength) ? true : false
-            let _firstAns = register.user.firstQ;
-            validation = (Math.max(_firstAns.length, maxLength) === maxLength) ? true : false
-            let _secAns = register.user.secondQ;
-            validation = (Math.max(_secAns.length, maxLength) === maxLength) ? true : false
+            var maxLength = 50;
+            var _userName = register.user.userName;
+            var _password = register.user.password;
+            var _rePassord = register.user.re_password;
+            var _firstName = register.user.firstName;
+            var validation = (Math.max(_firstName.length, maxLength) === maxLength) ? true : false;
+            var _lastName = register.user.lastName;
+            validation = (Math.max(_lastName.length, maxLength) === maxLength) ? true : false;
+            var _phone = register.user.phone;
+            validation = (Math.max(_phone.length, maxLength) === maxLength) ? true : false;
+            var _country = register.user.country;
+            var _address = register.user.address;
+            validation = (Math.max(_address.length, maxLength) === maxLength) ? true : false;
+            var _firstAns = register.user.firstQ;
+            validation = (Math.max(_firstAns.length, maxLength) === maxLength) ? true : false;
+            var _secAns = register.user.secondQ;
+            validation = (Math.max(_secAns.length, maxLength) === maxLength) ? true : false;
 
-            if (!_userName) { alert('please provide 3 to 8 letters username'); return; }
-            if (_rePassord != _password) {
-                alert("Paswword doesn't match!\n Please insert match passwords!")
+            if (!_userName) { window.alert('please provide 3 to 8 letters username'); return; }
+            if (_rePassord !== _password) {
+                window.alert("Paswword doesn't match!\n Please insert match passwords!");
                 return;
             } else if (!validation) {
-                alert("The maximum size per field is 50 characters!")
+                window.alert("The maximum size per field is 50 characters!");
                 return;
             }
-            let _categories = [register.user.faveGenre1, register.user.faveGenre2];
-            validation = (register.user.faveGenre1 === register.user.faveGenre2) ? false : true
+            var _categories = [register.user.faveGenre1, register.user.faveGenre2];
+            validation = (register.user.faveGenre1 === register.user.faveGenre2) ? false : true;
             if (!validation) {
-                alert("Please choose different favorite genres")
+                window.alert("Please choose different favorite genres");
                 return;
             }
 
             var validity = function (userName, password) {
-                let validCheck = !(userName.length < 3 || userName.length > 8 || !(/^[a-zA-Z]+$/.test(userName)));
+                var validCheck = !(userName.length < 3 || userName.length > 8 || !(/^[a-zA-Z]+$/.test(userName)));
                 if (!validCheck) {
-                    alert("The user name that supplied illegal\n Please insert between 3 and 8 letters!")
+                    window.alert("The user name that supplied illegal\n Please insert between 3 and 8 letters!");
                     return false;
                 }
                 validCheck = (/^[0-9]+$/.test(_phone));
                 if (!validCheck) {
-                    alert("phone must contains digit only!")
+                    window.alert("phone must contains digit only!");
                     return false;
                 }
 
                 validCheck = validCheck && !(password.length < 5 || password.length > 10 || !(/^[0-9a-zA-Z]+$/.test(password)));
                 if (!validCheck) {
-                    alert("The password not llegal\n Make sure the password contains at least one digit and not allowing special characters!")
+                    window.alert("The password not llegal\n Make sure the password contains at least one digit and not allowing special characters!");
                     return false;
                 }
-                if (!_firstName || !_lastName || !_country || !_address || !_phone || !_firstAns || !_secAns) { alert("please fill all the details"); return false; }
+                if (!_firstName || !_lastName || !_country || !_address || !_phone || !_firstAns || !_secAns) { window.alert("please fill all the details"); return false; }
                 return true;
-            }
+            };
 
             if (!validity(_userName, _password))
-                return;
+                {return;}
             registerService.registerNewUser(_userName, _password, _firstName, _lastName, _country, _address, _phone, _firstAns, _secAns, _categories);
-        }        
+        };       
 
     });

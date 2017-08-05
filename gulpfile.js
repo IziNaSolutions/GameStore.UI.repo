@@ -291,7 +291,7 @@ gulp.task('watch-dev', ['clean-build-app-dev', 'validate-devserver-scripts'], fu
 gulp.task('watch-prod',
     [
         'clean-build-app-prod'
-        //, 'validate-devserver-scripts'
+        , 'validate-devserver-scripts'
     ]
     , function () {
 

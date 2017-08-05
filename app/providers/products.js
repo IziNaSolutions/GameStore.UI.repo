@@ -8,7 +8,7 @@
  * Service in the gameStoreApp.
  */
 angular.module('gameStoreApp')
-  .service('products', function (commonHttp,$log) {
+  .service('products', function (commonHttp) {
 
     
 
@@ -23,7 +23,7 @@ angular.module('gameStoreApp')
         return response.data;
       });
 
-    }
+    };
 
     var getTopFive = function (){
       return commonHttp.httpCall(
@@ -35,7 +35,7 @@ angular.module('gameStoreApp')
       ).then(function (response) {
         return response.data;
       });
-    }
+    };
 
     var getCategories = function (){
       return commonHttp.httpCall(
@@ -47,7 +47,7 @@ angular.module('gameStoreApp')
       ).then(function (response) {
         return response.data;
       });
-    }
+    };
 
     var getLastMonthItems = function (){
       return commonHttp.httpCall(
@@ -59,7 +59,7 @@ angular.module('gameStoreApp')
       ).then(function (response) {
         return response.data;
       });
-    }
+    };
 
     var getGame = function (gameName){
       return commonHttp.httpCall(
@@ -72,7 +72,7 @@ angular.module('gameStoreApp')
       ).then(function (response) {
         return response.data;
       });
-    }
+    };
 
     var getItemsByCategory = function (category){
       return commonHttp.httpCall(
@@ -85,7 +85,7 @@ angular.module('gameStoreApp')
       ).then(function (response) {
         return response.data;
       });
-    }
+    };
 
     var getStorage = function (){
       return commonHttp.httpCall(
@@ -97,7 +97,7 @@ angular.module('gameStoreApp')
       ).then(function (response) {
         return response.data;
       });
-    }
+    };
 
     var updateAmount = function (gameName,StokeAmount){
       return commonHttp.httpCall(
@@ -111,7 +111,7 @@ angular.module('gameStoreApp')
       ).then(function (response) {
         return response.data;
       });
-    }
+    };
 
     var addGame = function (gameName,description,picPath,publisher,price,stokeAmount,category){
       return commonHttp.httpCall(
@@ -128,10 +128,10 @@ angular.module('gameStoreApp')
         },
         null
       ).then(function (response) {
-        alert(response.data);        
+        window.alert(response.data);        
         return response.data;
       });
-    }
+    };
 
     var gamesRec = function (user){
       return commonHttp.httpCall(
@@ -145,7 +145,7 @@ angular.module('gameStoreApp')
       ).then(function (response) {
         return response.data;
       });
-    }
+    };
 
 
     var deleteGame = function (gameName){
@@ -157,10 +157,10 @@ angular.module('gameStoreApp')
         },
         null
       ).then(function (response) {
-        alert(response.data); 
+        window.alert(response.data); 
         return response.data;
       });
-    }
+    };
 
     var API = {
             getAllProduct: getAllProduct,

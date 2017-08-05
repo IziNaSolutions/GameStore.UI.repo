@@ -8,7 +8,7 @@
  * Service in the gameStoreApp.
  */
 angular.module('gameStoreApp')
-    .service('orders', function(commonHttp, $log) {
+    .service('orders', function(commonHttp) {
 
         ///////////// Initiate ///////////
 
@@ -21,7 +21,7 @@ angular.module('gameStoreApp')
 
         var GetServiceBaseURL = function() {
             return commonHttp.GetServiceBaseURL();
-        }
+        };
 
         var confirmNewOrder = function(userName, currency, shipDate) {
 
@@ -71,7 +71,7 @@ angular.module('gameStoreApp')
             ).then(function(response) {
                 return response.data;
             });
-        }
+        };
 
         function getAllOrders() {
             return commonHttp.httpCall(

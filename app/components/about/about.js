@@ -8,6 +8,6 @@
  * Controller of the gameStoreApp
  */
 angular.module('gameStoreApp')
-    .controller('AboutCtrl', function(session) {
+    .controller('AboutCtrl', function() {
         
     });

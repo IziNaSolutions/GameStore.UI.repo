@@ -36,7 +36,7 @@ angular.module('gameStoreApp')
 
         var GetServiceBaseURL = function() {
             return commonHttp.GetServiceBaseURL();
-        }
+        };
 
         var addToCart = function(gameName, amount, userName) {
             $log.debug('in cart.addToCart( ' + userName + ', ' + gameName + ', ' + amount + ' )');

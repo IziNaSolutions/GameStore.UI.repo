@@ -9,7 +9,7 @@
  */
 angular.module('gameStoreApp')
   .service('clients', function (commonHttp) {
-    recoverPassword
+    
 
     var recoverPassword = function (userName, ans1, ans2) {
       return commonHttp.httpCall(
@@ -32,18 +32,18 @@ angular.module('gameStoreApp')
       ).then(function (response) {
         return response.data;
       });
-    }
+    };
 
     var getUsers = function () {
       return commonHttp.httpCall(
         'GET',
         '/users',
-        '/getUsers', null, null,
+        '/getUsers', null, null
 
       ).then(function (response) {
         return response.data;
       });
-    }
+    };
 
     var deleteUser = function (userName) {
       return commonHttp.httpCall(
@@ -54,10 +54,10 @@ angular.module('gameStoreApp')
           userName: userName,
         }, null
       ).then(function (response) {
-        alert(userName + ' deleted successfully and list will be refreshed')
+        //alert(userName + ' deleted successfully and list will be refreshed');
         return response.data;
       });
-    }
+    };
 
     var setAdmin = function (userName, value) {
       return commonHttp.httpCall(
@@ -67,7 +67,7 @@ angular.module('gameStoreApp')
         {
           userName: userName,
           value: parseInt(value),
-        }, null,
+        }, null
       ).then(function (response) {
         return response.data;
       });
@@ -85,7 +85,7 @@ angular.module('gameStoreApp')
       getUsers: getUsers,
       setAdmin: setAdmin
 
-    }
+    };
     return API;
 
   });

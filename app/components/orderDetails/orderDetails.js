@@ -31,10 +31,10 @@ angular.module('gameStoreApp')
                     getOrderGames();
                 } else {
                     for (var i = 0; i < orderDetails.allOrders.length; i++) {
-                        if (orderDetails.allOrders[i].orderID == orderDetails.orderID)
-                            orderDetails.show = true;
+                        if (orderDetails.allOrders[i].orderID === orderDetails.orderID)
+                            {orderDetails.show = true;}
                     }
-                    if (orderDetails.show == false) {
+                    if (orderDetails.show === false) {
                         session.hideHeaders();
                         $location.path('/404');
                     } else {
@@ -54,7 +54,7 @@ angular.module('gameStoreApp')
                     orderDetails.order = res;
                 });
             }
-        };
+        }
 
 
 

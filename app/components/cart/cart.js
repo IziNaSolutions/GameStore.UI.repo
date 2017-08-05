@@ -30,7 +30,7 @@ angular.module('gameStoreApp')
                 .then(function (res) {
                     $log.info("getCartInfo response:", res);
                     cartSelf.cartProducts = res;
-                    if (cartSelf.cartProducts != null && cartSelf.cartProducts.length > 0) {
+                    if (cartSelf.cartProducts !== null && cartSelf.cartProducts.length > 0) {
                         for (var i = 0; i < cartSelf.cartProducts.length; i++) {
                             cartSelf.total += cartSelf.cartProducts[i].price * cartSelf.cartProducts[i].amountInCart;
                         }
@@ -39,7 +39,7 @@ angular.module('gameStoreApp')
                         cartSelf.empty = true;
                     }
                 });
-        };
+        }
 
         cartSelf.showProduct = function (gameName) {
             products.getGame(gameName)
@@ -52,10 +52,11 @@ angular.module('gameStoreApp')
 
 
         cartSelf.refresh = function (product) {
-            if (product.amountInCart != product.quantity) {
+            if (product.amountInCart !== product.quantity) {
                 cartSelf.show = false;
                 cartSelf.total = 0;
                 cart.updateItemAmountAtCart(product.gameName, product.quantity, cartSelf.user.userName).then(function (res) {
+                    console.log(res);
                     getCartInfo();
                 });
             }
@@ -72,7 +73,7 @@ angular.module('gameStoreApp')
 
         cartSelf.navigateTo = function (next) {
             $location.path('/' + next);
-        }
+        };
 
 
 

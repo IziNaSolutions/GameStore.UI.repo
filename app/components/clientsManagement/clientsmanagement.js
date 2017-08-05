@@ -15,7 +15,7 @@ angular.module('gameStoreApp')
     clientsManagement.baseUrl = commonHttp.GetServiceBaseURL();
 
     function check() {
-      if (session.get().userName == 'Guest') {
+      if (session.get().userName === 'Guest') {
         session.hideHeaders();
         $location.path('/404');
       }
@@ -30,8 +30,10 @@ angular.module('gameStoreApp')
       });
 
     clientsManagement.deleteUser = function (userName) {
-      if (!userName)
-        alert('you must choose a user');
+      if (!userName) {
+        window.alert('you must choose a user');
+        return;
+      }
       clients.deleteUser(userName)
         .then(function (res) {
           $log.info("deleteUser response:", res);
@@ -42,15 +44,15 @@ angular.module('gameStoreApp')
             });
 
         });
-    }
+    };
 
     clientsManagement.setAdmin = function (userName, value) {
       if (!userName) {
-        alert('you must choose a user');
+        window.alert('you must choose a user');
         return;
       }
       if (value === "set value") {
-        alert('you must choose a value');
+        window.alert('you must choose a value');
         return;
       }
       clients.setAdmin(userName, value)
@@ -58,11 +60,11 @@ angular.module('gameStoreApp')
           $log.info("setAdmin response:", res);
         });
 
-    }
+    };
 
     clientsManagement.register = function () {
       $location.path('/register');
-    }
+    };
 
 
   });

@@ -10,17 +10,17 @@
 
     <h3>set/unset admin </h3>  
     <label>Choose user </label>
-    <select class="C" ng-model="setUsers" ng-options="user.userName for user in clientsManagement.users" required autofocus>
+    <select class="form-control" ng-model="setUsers" ng-options="user.userName for user in clientsManagement.users" required autofocus>
     <option value="">Choose user</option>
     </select>
     <label>set admin value </label>
-    <select class="C" ng-model="setvalue" required autofocus>
+    <select class="form-control" ng-model="setvalue" required autofocus>
     <option value="">set value</option>
-    <option value=0>Unset</option>
-    <option value=1>Set</option>
+    <option value="0">Unset</option>
+    <option value="1">Set</option>
+    </select>
     
-    <input type="submit" class="btn btn-success" value="Submit" ng-click="clientsManagement.setAdmin(setUsers.userName,setvalue)">    
-    
+    <input type="submit" class="btn btn-success" value="Submit" ng-click="clientsManagement.setAdmin(setUsers.userName,setvalue)">       
     
 </div>
 <br>
