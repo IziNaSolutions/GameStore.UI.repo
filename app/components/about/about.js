@@ -9,5 +9,5 @@
  */
 angular.module('gameStoreApp')
     .controller('AboutCtrl', function(session) {
-        about.user = session.get();
+        //about.user = session.get();
     });
