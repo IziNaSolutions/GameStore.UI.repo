@@ -90,12 +90,13 @@ angular.module('gameStoreApp')
                     } else {
                         login.message.text = result;
                         login.message.class = 'label label-warning';
+                        alert('incorrect cardinality');
                     } // if result.success
 
                 }); // auth.login
+                
 
         }; // login.submit
 
     }); // angular.controller
 
-// TODO: fix redirect doesn't working after login

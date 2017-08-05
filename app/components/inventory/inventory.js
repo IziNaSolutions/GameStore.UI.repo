@@ -8,14 +8,18 @@
  * Controller of the gameStoreApp
  */
 angular.module('gameStoreApp')
-  .controller('InventoryCtrl', function (session,commonHttp, products, $log) {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('InventoryCtrl', function (session,commonHttp, products, $log, $location) {
+    
     var inventory = this;
     inventory.baseUrl = commonHttp.GetServiceBaseURL();
+
+    function check() {
+      if (session.get().userName == 'Guest') {
+        session.hideHeaders();
+        $location.path('/404');
+      }
+    }
+    check();
 
     products.getAllProduct()
       .then(function (res) {
