@@ -8,7 +8,7 @@
  * Controller of the gameStoreApp
  */
 angular.module('gameStoreApp')
-    .controller('CartCtrl', function (cart, session, $log, $location,products) {
+    .controller('CartCtrl', function(cart, session, $log, $location, products) {
 
         /////// init /////////
 
@@ -22,12 +22,20 @@ angular.module('gameStoreApp')
 
         cartSelf.total = 0;
 
+        function check() {
+            if (session.get().userName == 'Guest') {
+                session.hideHeaders();
+                $location.path('/404');
+            }
+        }
+        check();
+
         getCartInfo();
 
         function getCartInfo() {
             cartSelf.total = 0;
             cart.getCartInfo(cartSelf.user.userName)
-                .then(function (res) {
+                .then(function(res) {
                     $log.info("getCartInfo response:", res);
                     cartSelf.cartProducts = res;
                     if (cartSelf.cartProducts != null && cartSelf.cartProducts.length > 0) {
@@ -41,36 +49,35 @@ angular.module('gameStoreApp')
                 });
         };
 
-        cartSelf.showProduct = function (gameName) {
+        cartSelf.showProduct = function(gameName) {
             products.getGame(gameName)
-                .then(function (res) {
+                .then(function(res) {
                     $log.info("getGame response:", res);
                     cartSelf.detailedGame = res["0"];
-                }
-                );
+                });
         };
 
 
-        cartSelf.refresh = function (product) {
+        cartSelf.refresh = function(product) {
             if (product.amountInCart != product.quantity) {
                 cartSelf.show = false;
                 cartSelf.total = 0;
-                cart.updateItemAmountAtCart(product.gameName, product.quantity, cartSelf.user.userName).then(function (res) {
+                cart.updateItemAmountAtCart(product.gameName, product.quantity, cartSelf.user.userName).then(function(res) {
                     getCartInfo();
                 });
             }
         };
 
-        cartSelf.delete = function (product) {
+        cartSelf.delete = function(product) {
             cartSelf.show = false;
             cartSelf.total = 0;
-            cart.updateItemAmountAtCart(product.gameName, 0, cartSelf.user.userName).then(function (res) {
+            cart.updateItemAmountAtCart(product.gameName, 0, cartSelf.user.userName).then(function(res) {
                 console.log(res);
                 getCartInfo();
             });
         };
 
-        cartSelf.navigateTo = function (next) {
+        cartSelf.navigateTo = function(next) {
             $location.path('/' + next);
         }
 

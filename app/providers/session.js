@@ -182,6 +182,8 @@ angular.module('gameStoreApp')
 
             // TODO - amit to test - see if exception not thrown here if cookie not exists...
             $cookies.remove(_cookieKey);
+            // navigate after login to homepage
+            $location.path('/#/');
 
         }
 

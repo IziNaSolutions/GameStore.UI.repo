@@ -3,58 +3,56 @@
 
 <div class="content">
 
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <button class="btn btn-primary" ng-click="order= 'gameName' ">order by name</button>
-  <button class="btn btn-primary" ng-click="order= 'category'">order by category</button>
-  <button class="btn btn-primary" ng-click="order= 'publisher'">order by publisher</button>
-  <br><br>
-  <label>Filters: </label>
-  <input class="form-control" type="text" ng-model="search" placeholder="search for a game">
-  <input class="form-control" type="text" ng-model="searchCategory" placeholder="search for a category">
-  <br>
-  <ul id="game-list" class="inline">
-    <li ng-repeat="game in catalog.games | orderBy: order | filter: {gameName : search , category : searchCategory}">
-      <img ng-src="{{catalog.baseUrl + game.picPath}}" style="margin: -12px 10px 0 0; float:left ;width:50px;" ng-click="catalog.showProduct(game.gameName)"
-        onclick="document.getElementById('id01').style.display='block'; " />
-      <h3>{{game.gameName}} , By: {{game.publisher}}</h3>
-      <span class="price">{{game.category}}, {{game.price | currency}} </span>
-      <button class="btn btn-info" ng-if="user.isConnected" ng-click="catalog.addToCart(game.gameName, 1, user.userName)">add 1 unit to cart</button>
-    </li>
-  </ul>
+    <button class="btn btn-primary" ng-click="order= 'gameName' ">order by name</button>
+    <button class="btn btn-primary" ng-click="order= 'category'">order by category</button>
+    <button class="btn btn-primary" ng-click="order= 'publisher'">order by publisher</button>
+    <br><br>
+    <label>Filters: </label>
+    <input class="form-control" type="text" ng-model="search" placeholder="search for a game">
+    <input class="form-control" type="text" ng-model="searchCategory" placeholder="search for a category">
+    <br>
+    <ul id="game-list" class="inline">
+        <li ng-repeat="game in catalog.games | orderBy: order | filter: {gameName : search , category : searchCategory}">
+            <img ng-src="{{catalog.baseUrl + game.picPath}}" style="margin: -12px 10px 0 0; float:left ;width:50px;" ng-click="catalog.showProduct(game.gameName)" onclick="document.getElementById('id01').style.display='block'; " />
+            <h3>{{game.gameName}} , By: {{game.publisher}}</h3>
+            <span class="price">{{game.category}}, {{game.price | currency}} </span>
+            <button class="btn btn-info" ng-if="user.isConnected" ng-click="catalog.addToCart(game.gameName, 1, user.userName)">add 1 unit to cart</button>
+        </li>
+    </ul>
 </div>
 
 <br>
 <h2 class="display-2">Recommandation for you:</h2>
 <br>
 <div class="content">
-  <ul id="game-list" class="inline">
-    <li ng-repeat="rec in catalog.Recgames">
-      <img class="details" ng-src="{{catalog.baseUrl + rec.picPath}}" style="margin: -12px 10px 0 0; float:left ;width:50px;" ng-click="gameDetails(rec)"
-      />
-      <h3>{{rec.gameName}}, By:{{rec.publisher}}</h3>
-      <span class="price">{{rec.price | currency}}</span>
-    </li>
-  </ul>
+    <ul id="game-list" class="inline">
+        <li ng-repeat="rec in catalog.Recgames">
+            <img class="details" ng-src="{{catalog.baseUrl + rec.picPath}}" style="margin: -12px 10px 0 0; float:left ;width:50px;" ng-click="gameDetails(rec)" />
+            <h3>{{rec.gameName}}, By:{{rec.publisher}}</h3>
+            <span class="price">{{rec.price | currency}}</span>
+        </li>
+    </ul>
 </div>
 
 <br>
 <!--MODAL-->
 <div id="id01" class="w3-modal">
-  <div class="w3-modal-content" style="padding: 40px">
-    <div class="w3-container">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <div class="w3-modal-content" style="padding: 40px">
+        <div class="w3-container">
 
-      <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
-      <img class="details" ng-src="{{catalog.baseUrl + catalog.detailedGame.picPath}} ">
-      <br><br><br><br>
-      <h2>Game Name: {{catalog.detailedGame.gameName}}</h2>
-      <br>
-      <h4>Description: {{catalog.detailedGame.description}}</h4>
-      <h4>Publisher: {{catalog.detailedGame.publisher}}</h4>
-      <h4>Price: {{catalog.detailedGame.price}}$</h4>
-      <h4>Category: {{catalog.detailedGame.category}}</h4>
-      <button class="btn btn-info" ng-if="user.isConnected" ng-click="catalog.addToCart(catalog.detailedGame.gameName, 1, user.userName)">add 1 unit to cart</button>
+            <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+            <img class="details" ng-src="{{catalog.baseUrl + catalog.detailedGame.picPath}} ">
+            <br><br><br><br>
+            <h2>Game Name: {{catalog.detailedGame.gameName}}</h2>
+            <br>
+            <h4>Description: {{catalog.detailedGame.description}}</h4>
+            <h4>Publisher: {{catalog.detailedGame.publisher}}</h4>
+            <h4>Price: {{catalog.detailedGame.price}}$</h4>
+            <h4>Category: {{catalog.detailedGame.category}}</h4>
+            <button class="btn btn-info" ng-if="user.isConnected" ng-click="catalog.addToCart(catalog.detailedGame.gameName, 1, user.userName)">add 1 unit to cart</button>
 
 
+        </div>
     </div>
-  </div>
 </div>

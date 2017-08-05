@@ -1,4 +1,3 @@
-<!doctype html>
 <html>
 
 <head>
@@ -36,7 +35,6 @@
                         <span class="icon-bar"></span>
                     </button>
 
-                    <a class="navbar-brand" href="#/">Games Store</a>
 
                 </div>
 
@@ -48,7 +46,6 @@
                         <li ng-repeat="item in menu" ng-class="{active: item.route == '#' + menuActive}" ng-if="item.roles.includes(user.role)">
                             <a href="{{::item.route}}">{{item.label}}</a>
                         </li>
-                        
                     </ul>
                     <!-- Hello Dropdown -->
 
