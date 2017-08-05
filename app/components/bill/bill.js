@@ -33,7 +33,7 @@ angular.module('gameStoreApp')
         }
 
         check();
-        
+
         bill.date = new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000).toLocaleDateString();
         getCartInfo();
 
@@ -63,25 +63,22 @@ angular.module('gameStoreApp')
                             if (bill.cartProducts[i].amountInCart > bill.cartProducts[i].stock)
                                 bill.stock = false;
                         }
-                        if(bill.currency === 'NIS')
-                        {
-                            bill.factor=3.8;
+                        if (bill.currency === 'NIS') {
+                            bill.factor = 3.8;
                             bill.units = 'NIS';
                         }
-                        bill.show = true;                        
+                        bill.show = true;
                     } else {
                         bill.empty = true;
                     }
                 });
         };
-        bill.setFactor = function(currency){
-            if(currency === 'NIS')
-                        {
-                            bill.factor=3.8;
-                            bill.units = 'NIS';
-                        }
-            else {
-                bill.factor=1;
+        bill.setFactor = function(currency) {
+            if (currency === 'NIS') {
+                bill.factor = 3.8;
+                bill.units = 'NIS';
+            } else {
+                bill.factor = 1;
                 bill.units = '$';
             }
         }
@@ -93,9 +90,13 @@ angular.module('gameStoreApp')
                 alert("In some games there are not enough in stock");
             else if (session.get().userName !== 'Guest') {
                 orders.confirmNewOrder(bill.userName, bill.currency, bill.date).then(function(res) {
-                    console.log(res.status);
-                    getCartInfo();
-                    bill.orderComplete = true;
+                    orders.getPastOrders(bill.userName).then(function(res) {
+
+                            bill.orderID = res[res.length - 1].orderID;
+                            bill.orderComplete = true;
+                        })
+                        //getCartInfo();
+
                 })
             } else {
                 session.hideHeaders();
