@@ -183,8 +183,9 @@ angular.module('gameStoreApp')
                 userName: 'Guest',
             };
 
-            // TODO - amit to test - see if exception not thrown here if cookie not exists...
+            
             $cookies.remove(_cookieKey);
+            $location.path('/#/');
 
         }
 

@@ -4,7 +4,7 @@
     <ul id="game-list">
       <li  ng-repeat="game in catalog.topGames">
           <br>
-        <img ng-src="{{catalog.baseUrl +game.picPath}}" style="margin: -12px 10px 0 0; float:left ;width:50px;"
+        <img ng-src="{{catalog.baseUrl +game.picPath}}" alt="..." style="margin: -12px 10px 0 0; float:left ;width:50px;"
              ng-show="game.picPath"/>
         <h3>{{game.gameName}} ,sales last week: {{game.Total}}</h3>
       </li>
@@ -16,7 +16,7 @@
     <ul id="game-list2">
       <li  ng-repeat="game in catalog.MonthGames">
           <br>
-        <img ng-src="{{catalog.baseUrl + game.picPath}}" style="margin: -12px 10px 0 0; float:left ;width:50px;"
+        <img ng-src="{{catalog.baseUrl + game.picPath}}" alt="..." style="margin: -12px 10px 0 0; float:left ;width:50px;"
              ng-show="game.picPath"/>
         <h3>{{game.gameName}}</h3>
       </li>

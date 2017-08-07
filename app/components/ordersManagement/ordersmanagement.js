@@ -14,7 +14,7 @@ angular.module('gameStoreApp')
         ordersManagement.empty = false;
 
         function check() {
-            if (session.get().userName === 'Guest') {
+            if (session.get().role === 'admin') {
                 session.hideHeaders();
                 $location.path('/404');
             }
@@ -31,8 +31,5 @@ angular.module('gameStoreApp')
                     ordersManagement.allOrders[i].orderDate = new Date(ordersManagement.allOrders[i].orderDate).toLocaleDateString();
                     ordersManagement.allOrders[i].shipmentDate = new Date(ordersManagement.allOrders[i].shipmentDate).toLocaleDateString();
                 }
-
-
-
             });
     });
