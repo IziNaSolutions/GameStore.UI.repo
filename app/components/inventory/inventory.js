@@ -14,7 +14,7 @@ angular.module('gameStoreApp')
     inventory.baseUrl = commonHttp.GetServiceBaseURL();
 
     function check() {
-      if (session.get().userName === 'Guest') {
+      if (session.get().role === 'admin') {
         session.hideHeaders();
         $location.path('/404');
       }

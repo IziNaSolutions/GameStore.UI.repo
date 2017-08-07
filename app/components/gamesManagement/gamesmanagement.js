@@ -16,7 +16,7 @@ angular.module('gameStoreApp')
     gamesManagement.game = { gameName: '', desc: '', picPath: '', publisher: '', price: '', stokeAmount: '', category: ''};
 
     function check() {
-      if (session.get().userName === 'Guest') {
+      if (session.get().role === 'admin') {
         session.hideHeaders();
         $location.path('/404');
       }

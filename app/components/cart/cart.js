@@ -8,7 +8,7 @@
  * Controller of the gameStoreApp
  */
 angular.module('gameStoreApp')
-    .controller('CartCtrl', function (cart, session, $log, $location,products) {
+    .controller('CartCtrl', function (cart, session, $log, $location, products) {
 
         /////// init /////////
 
@@ -17,6 +17,14 @@ angular.module('gameStoreApp')
         cartSelf.user = session.get();
         cartSelf.empty = false;
         cartSelf.detailedGame = "";
+
+        function check() {
+            if (session.get().userName === 'Guest') {
+                session.hideHeaders();
+                $location.path('/404');
+            }
+        }
+        check();
 
         cartSelf.baseUrl = cart.GetServiceBaseURL();
 

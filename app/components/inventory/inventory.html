@@ -9,7 +9,7 @@
     <label> choose a game </label>
     <select class="form-control" ng-model="newAmountGame" ng-options="game.gameName as game.gameName for game in inventory.games"
         required autofocus>
-    <option value="none">please select a game</option>
+    <option value="">please select a game</option>
     </select>
     <br>
     <input type="submit" class="btn btn-success" value="Submit" ng-click="inventory.updateAmount(newAmountGame,newAmount)">

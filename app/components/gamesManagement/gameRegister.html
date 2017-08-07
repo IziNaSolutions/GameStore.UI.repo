@@ -5,45 +5,45 @@
     <!-- username field -->
     <div class="form-group">
         <label>Game Name</label>
-        <input type="text" name="gameName" class="form-control" ng-model="gamesManagement.game.gameName" ng-minlength="3" ng-maxlength="8" ng-pattern="/^[a-zA-Z\s]*$/"  placeholder="enter a game name" ; required autofocus >
+        <input type="text" name="gameName" class="form-control" ng-model="gamesManagement.game.gameName" ng-minlength="3" ng-maxlength="8" ng-pattern="/^[a-zA-Z\s]*$/"  placeholder="enter a game name"  required  >
 
     </div>
 
     <!-- Desc field -->
     <div class="form-group">
         <label>Description </label>
-        <input type="text" name="Desc" class="form-control" ng-model="gamesManagement.game.desc"  ng-minlength="1" ng-maxlength="50" placeholder="enter a description for the new game" ; required autofocus>        
+        <input type="text" name="Desc" class="form-control" ng-model="gamesManagement.game.desc"  ng-minlength="1" ng-maxlength="50" placeholder="enter a description for the new game"  required >        
     </div>
 
     <!-- picPath field -->
     <div class="form-group">
         <label>Picture path in this format: (/images/[picName].png)</label>
         
-        <input type="text" name="picPath" class="form-control" ng-model="gamesManagement.game.picPath" placeholder="enter a pic path" ; required autofocus>        
+        <input type="text" name="picPath" class="form-control" ng-model="gamesManagement.game.picPath" placeholder="enter a pic path"  required >        
     </div>
 
     <!-- publisher field -->
     <div class="form-group">
         <label>Publisher</label>
-        <input type="text" name="publisher" class="form-control" ng-model="gamesManagement.game.publisher" placeholder="enter a publisher name" required autofocus>        
+        <input type="text" name="publisher" class="form-control" ng-model="gamesManagement.game.publisher" placeholder="enter a publisher name" required >        
     </div>
 
     <!-- price field -->
     <div class="form-group">
         <label>Price: </label>
-        <input type="number" name="price"  ng-model="gamesManagement.game.price" min="1" max="50" ; required autofocus>        
+        <input type="number" name="price"  ng-model="gamesManagement.game.price" min="1" max="50"  required >        
     </div>
 
     <!-- stokeAmount field -->
     <div class="form-group">
         <label>Stoke amount: </label>
-        <input type="number" name="stokeAmount" ng-model="gamesManagement.game.stokeAmount" min="1" max="50" ; required autofocus>        
+        <input type="number" name="stokeAmount" ng-model="gamesManagement.game.stokeAmount" min="1" max="50"  required >        
     </div>
     
     <!-- category field -->        
     <div class="form-group">
     <label>Category</label>
-    <select class="C" ng-model="gamesManagement.game.category" ng-options="genre as genre for genre in gamesManagement.genres" required autofocus>
+    <select class="C" ng-model="gamesManagement.game.category" ng-options="genre as genre for genre in gamesManagement.genres" required>
     <option value="">Category</option>
     </select>   
     </div>    
